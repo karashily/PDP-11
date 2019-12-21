@@ -277,7 +277,7 @@ int main() {
 	for (auto line : program) {
 		//if the line has value of X only
 		if (!isalpha(line[0])) {
-			int X = extractX(line);
+			bitset<16> X = extractX(line);
 			outFile << X << endl;
 			continue;
 		}
