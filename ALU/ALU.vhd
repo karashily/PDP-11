@@ -5,7 +5,7 @@ entity ALU is
     port (A, B          :       in std_logic_vector (15 downto 0);
           F             :       out std_logic_vector (15 downto 0);
           NopA,ADDD,ADC,SUB,SBC,ANDD,ORR,XNORR,IncA,DecA,Clear,NotA,LSR_B,ROR_B,RRC_B,ASR_B,LSL_B,ROL_B,RLC_B : in std_logic;
-          Cin           :       in std_logic;
+          Cin       :       in std_logic;
           Cout, ZF      :       out std_logic);
 end entity ALU;
 
@@ -13,11 +13,11 @@ architecture ALU_arch of ALU is
 component full16bitAdder is  
 	port (A, B      :   IN   std_logic_vector (15 downto 0);
   		  Cin       :   IN   std_logic;
-		  F         :   OUT  std_logic_vector (15 downto 0);
+		  Fout         :   OUT  std_logic_vector (15 downto 0);
 		  Cout      :   OUT  std_logic);
 end component full16bitAdder;
 
-signal NotB, NegB, FA1, FAB, FABC, FANegB, FANegBNegC, FANeg1    : std_logic_vector (15 downto 0);   
+signal NotB, NegB, FA1, FAB, FABC, FANegB, FANegBNegC, FANeg1, Fout    : std_logic_vector (15 downto 0);   
 signal CB, NotC, CA1, CAB, CABC, CANegB, CANegBNegC, CANeg1      : std_logic;
 
 begin
@@ -38,49 +38,53 @@ begin
     process (NopA,ADDD,ADC,SUB,SBC,ANDD,ORR,XNORR,IncA,DecA,Clear,NotA,LSR_B,ROR_B,RRC_B,ASR_B,LSL_B,ROL_B,RLC_B)
     begin
         if  NopA = '1' then
-            F    <= A;
+            Fout    <= A;
         elsif ADDD = '1' then
-            F    <= FAB;
+            Fout    <= FAB;
             Cout <= CAB;
         elsif ADC = '1' then
-            F    <= FABC;
+            Fout    <= FABC;
             Cout <= CABC;
         elsif SUB = '1' or (SBC = '1' and Cin = '1') then
-            F    <= FANegB;
+            Fout    <= FANegB;
             Cout <= CANegB;
         elsif SBC = '1' then
-            F    <= FANegBNegC;
+            Fout    <= FANegBNegC;
             Cout <= CANegBNegC;
         elsif ANDD = '1' then
-            F <= A and B;
+            Fout <= A and B;
         elsif ORR = '1' then
-            F <= A or B;
+            Fout <= A or B;
         elsif XNORR = '1' then
-            F <= A xnor B;
+            Fout <= A xnor B;
         elsif IncA = '1' then
-            F    <= FA1;
+            Fout    <= FA1;
             Cout <= CA1;
         elsif DecA = '1' then
-            F    <= FANeg1;
+            Fout    <= FANeg1;
             Cout <= CANeg1;
         elsif Clear = '1' then
-            F <= (others => '0');
+            Fout <= (others => '0');
         elsif NotA = '1' then
-            F <= not A;
+            Fout <= not A;
         elsif LSR_B = '1' then
-            F <= '0' & B (15 downto 1);
+            Fout <= '0' & B (15 downto 1);
         elsif ROR_B = '1' then
-            F <= B(0) & B (15 downto 1);
+            Fout <= B(0) & B (15 downto 1);
         elsif RRC_B = '1' then
-            F <= Cin & B (15 downto 1);
+            Fout <= Cin & B (15 downto 1);
         elsif ASR_B = '1' then
-            F <= B(15) & B (15 downto 1);
+            Fout <= B(15) & B (15 downto 1);
         elsif LSL_B = '1' then
-            F <= B (14 downto 0) & '0';
+            Fout <= B (14 downto 0) & '0';
         elsif ROL_B = '1' then
-            F <= B (14 downto 0) & B(15);
+            Fout <= B (14 downto 0) & B(15);
         elsif RLC_B = '1' then
-            F <= B (14 downto 0) & Cin;
+            Fout <= B (14 downto 0) & Cin;
         end if;
     end process;
+    
+    F <= Fout;
+    Zf <= Fout(0) or Fout(1) or Fout(2) or Fout(3) or Fout(4) or Fout(5) or Fout(6) or Fout(7)
+        or Fout(8) or Fout(9) or Fout(10) or Fout(11) or Fout(12) or Fout(13) or Fout(14) or Fout(15);
 end ALU_arch;
