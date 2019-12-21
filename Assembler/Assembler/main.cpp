@@ -3,6 +3,7 @@
 #include <string>
 #include <sstream>
 #include <vector>
+#include <map>
 #include <cassert>
 #include <bitset>
 using namespace std;
@@ -11,8 +12,7 @@ using namespace std;
 #define all(v) v.begin(), v.end()
 #define PB push_back
 
-vector<string> labels;
-vector<int> addresses;
+map<string, int> labels;
 vector<string> program;
 
 //===================================================
@@ -73,8 +73,6 @@ enum NoOp {
 //===================================================
 
 void storeLabelsOffsets();
-
-int findLabel(string label);
 
 string getLabel(string s);
 
@@ -295,21 +293,9 @@ void storeLabelsOffsets() {
 		removeSpaces(line);
 		if (isLabel(line)) {
 			string label = getLabel(line);
-			labels.PB(label);
-			addresses.PB(i);
+			labels[label] = i;
 		}
 	}
-}
-
-int findLabel(string label) {
-	int sz = labels.size();
-	if (sz == 0) return -1;
-
-	rep(i, 0, sz) {
-		if (labels[i] == label)
-			return i;
-	}
-	return -1;
 }
 
 string getLabel(string s) {
@@ -445,12 +431,11 @@ bitset<4> getOperationOpCode(string op, int i) {
 //return 111111<offset>
 bitset<16> extractOffset(string str) {
 	string label = getLabel(str);
-	int indx = findLabel(label);
 
-	if (indx == -1)
+	if (labels.find(label) == labels.end())
 		assert("Error! Label not found");
 
-	bitset<16> offset = addresses[indx];
+	bitset<16> offset = labels[label];
 	offset[15] = 1;
 	offset[14] = 1;
 	offset[13] = 1;
