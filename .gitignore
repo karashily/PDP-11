@@ -9,3 +9,7 @@ Assembler/Assembler/Debug/Assembler.tlog/unsuccessfulbuild
 *.ipch
 *.db
 Assembler/.vs/Assembler/v15/.suo
+*.pdb
+*.ilk
+*.exe
+*.obj

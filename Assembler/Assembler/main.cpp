@@ -2,7 +2,6 @@
 #include <fstream>
 #include <string>
 #include <sstream>
-#include <map>
 #include <vector>
 #include <cassert>
 #include <bitset>
@@ -219,9 +218,6 @@ bitset<16> assembler(string s) {
 	else if (isBranching(s)) {
 		bitset<4> operation = getOperationOpCode(opName, 3);
 		bitset<16> offset = extractOffset(s);
-
-		if (find(all(labels), offset) == labels.end())
-			assert("Error! Offset/Label not found in program");
 
 		IR = offset;
 		IR.set(15);
@@ -570,8 +566,7 @@ bool isOneOperand(string  str) {
 }
 
 bool isTwoOperand(string  str) {
-	size_t pos = str.find_first_of(',');
-	return pos != string::npos;
+	return str.find_first_of(',') != string::npos;
 }
 
 bool isBranching(string  str) {
