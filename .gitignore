@@ -1,3 +1,16 @@
 
 .picasa.ini
 .picasaoriginals/Bus Schematic.jpg
+Assembler/Assembler/Debug/vc141.pdb
+*.idb
+Assembler/Assembler/Debug/Assembler.tlog/unsuccessfulbuild
+*.tlog
+*.log
+*.ipch
+*.db
+Assembler/.vs/Assembler/v15/.suo
+*.pdb
+*.ilk
+*.exe
+*.obj
+*.enc

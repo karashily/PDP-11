@@ -1,0 +1,24 @@
+; bla bla
+    ;hi there
+ 
+
+ mOv R1, R0
+ 	ADD    r4, (r2)+
+
+ MyLAbel: 		ADC @R7,   -(r1)
+ label2:	;hallooooo
+
+ SBc 	X(r6), @(r1)+
+ 47
+ INC @X(r0)	;comment
+25
+RLC @-(r3)
+
+
+BR Mylabel
+
+BEQ googo
+
+HLT
+
+bla hej
