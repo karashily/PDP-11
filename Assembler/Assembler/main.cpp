@@ -49,6 +49,8 @@ enum TwoOp {
 };
 
 enum OneOp {
+	temp,
+	temp2,
 	INC,
 	DEC,
 	CLR,
@@ -76,6 +78,8 @@ void storeLabelsOffsets();
 
 string getLabel(string s);
 
+int extractX(string s);
+
 void convertUpperCase(string & str);
 
 //Inputs to the function
@@ -89,6 +93,8 @@ bitset<4> getOperationOpCode(string op, int i);
 
 //return 111111<offset>
 bitset<16> extractOffset(string str);
+
+string extractOpName(string str);
 
 // i = 1 ==> 1-operand
 // i = 2 ==> 2-operand
@@ -121,61 +127,52 @@ void removeSpaces(string & instr);
 //===================================================
 
 bitset<16> assembler(string s) {
-	if (!s.empty()) {
-		assert("No instruction error!");
-		return bitset<16>(0);
+	if (s.empty()) {
+		cout << "No instruction error!" << endl;
+		return bitset<16>("1111111111111111");
 	}
 	
-	bitset<16> IR;
-
-	//convert it upper case just in case anything is written in lower case
-	convertUpperCase(s);
+	bitset<16> IR = bitset<16>("1111111111111111");
 
 	//does the instruction has label or not
 	bool hasLabel = isLabel(s);
 
 	//if it has label, delete the label from the instruction
 	if (hasLabel) {
-		while (s[0] != ' ') s.erase(0, 1);
+		while (s[0] != ' ' && s[0] != '\t') s.erase(0, 1);
 		removeSpaces(s);
+		if (s[0] == ';') return bitset<16>("1111111111111111");
 	}
 
 	//cut first 4 characters of the instruction, in case it's XNOR
-	string opName = s;
-	opName.erase(opName.begin() + 4, opName.end());
+	string opName = extractOpName(s);
 
-	//if not XNOR, remove the space
-	if (opName[3] == ' ') opName.erase(3, 1);
-
-	//if it's BR or OR
-	if (opName[2] == ' ') opName.erase(2, 1);
-
-	if (isNoOperand(s)) {
+	if (isNoOperand(opName)) {
 		bitset<4> operation = getOperationOpCode(opName, 0);
-		string tempIR = "11110o1111111111";
-		tempIR[6] = operation[0];
+		string tempIR = "11110o0000000000";
+		tempIR[5] = '0' + operation[0];
 		IR = bitset<16>(tempIR);
 	}
 
-	else if (isOneOperand(s)) {
+	else if (isOneOperand(opName)) {
 		bitset<4> operation = getOperationOpCode(opName, 1);
-		string tempIR = "1110111111111111";
-		tempIR[11] = operation[3];
-		tempIR[10] = operation[2];
-		tempIR[9] = operation[1];
-		tempIR[8] = operation[0];
+		string tempIR = "1110111100111111";
+		tempIR[4] = '0' + operation[3];
+		tempIR[5] = '0' + operation[2];
+		tempIR[6] = '0' + operation[1];
+		tempIR[7] = '0' + operation[0];
 
 		bitset<3> destMode = getMode(s, 1, 1);
 
-		tempIR[7] = destMode[2];
-		tempIR[6] = destMode[1];
-		tempIR[5] = destMode[0];
+		tempIR[10] = '0' + destMode[2];
+		tempIR[11] = '0' + destMode[1];
+		tempIR[12] = '0' + destMode[0];
 
 		bitset<3> regNum = getRegisterNum(s, 1, 1);
 
-		tempIR[4] = regNum[2];
-		tempIR[3] = regNum[1];
-		tempIR[2] = regNum[0];
+		tempIR[13] = '0' + regNum[2];
+		tempIR[14] = '0' + regNum[1];
+		tempIR[15] = '0' + regNum[0];
 
 		IR = bitset<16>(tempIR);
 	}
@@ -183,41 +180,44 @@ bitset<16> assembler(string s) {
 	else if (isTwoOperand(s)) {
 		bitset<4> operation = getOperationOpCode(opName, 2);
 		string tempIR = "1111111111111111";
-		tempIR[15] = operation[3];
-		tempIR[14] = operation[2];
-		tempIR[13] = operation[1];
-		tempIR[12] = operation[0];
+		tempIR[0] = '0' + operation[3];
+		tempIR[1] = '0' + operation[2];
+		tempIR[2] = '0' + operation[1];
+		tempIR[3] = '0' + operation[0];
 
 		bitset<3> srcMode = getMode(s, 2, 2);
 		bitset<3> destMode = getMode(s, 2, 1);
 
-		tempIR[11] = srcMode[2];
-		tempIR[10] = srcMode[1];
-		tempIR[9] = srcMode[0];
+		tempIR[4] = '0' + srcMode[2];
+		tempIR[5] = '0' + srcMode[1];
+		tempIR[6] = '0' + srcMode[0];
 
-		tempIR[5] = destMode[2];
-		tempIR[4] = destMode[1];
-		tempIR[3] = destMode[0];
+		tempIR[10] = '0' + destMode[2];
+		tempIR[11] = '0' + destMode[1];
+		tempIR[12] = '0' + destMode[0];
 
 		bitset<3> destRegNum = getRegisterNum(s, 2, 1);
 		bitset<3> srcRegNum = getRegisterNum(s, 2, 2);
 
-		tempIR[8] = srcRegNum[2];
-		tempIR[7] = srcRegNum[1];
-		tempIR[6] = srcRegNum[0];
+		tempIR[7] = '0' + srcRegNum[2];
+		tempIR[8] = '0' + srcRegNum[1];
+		tempIR[9] = '0' + srcRegNum[0];
 
-		tempIR[2] = destRegNum[2];
-		tempIR[1] = destRegNum[1];
-		tempIR[0] = destRegNum[0];
+		tempIR[13] = '0' + destRegNum[2];
+		tempIR[14] = '0' + destRegNum[1];
+		tempIR[15] = '0' + destRegNum[0];
 
 		IR = bitset<16>(tempIR);
 	}
 
-	else if (isBranching(s)) {
+	else if (isBranching(opName)) {
 		bitset<4> operation = getOperationOpCode(opName, 3);
+		while (s[0] != ' ' && s[0] != '\t') s.erase(0, 1);
+		removeSpaces(s);
 		bitset<16> offset = extractOffset(s);
 
 		IR = offset;
+		if (IR == bitset<16>("1111111111111111")) return IR;
 		IR.set(15);
 		IR.set(14);
 		IR.reset(13);
@@ -226,17 +226,17 @@ bitset<16> assembler(string s) {
 		IR[10] = operation[0];
 	}
 
-	else if (isBonus(s)) {
+	else if (isBonus(opName)) {
 		bitset<4> operation = getOperationOpCode(opName, 4);
-		string tempIR = "11111oo111111111";
-		tempIR[10] = operation[1];
-		tempIR[9] = operation[0];
+		string tempIR = "11111oo000000000";
+		tempIR[5] = '0' + operation[1];
+		tempIR[6] = '0' + operation[0];
 
 		IR = bitset<16>(tempIR);
 	}
 
 	else
-		assert("Error! Invalid instruction name");
+		cout << "Error! Invalid instruction name" << endl;
 
 	return IR;
 }
@@ -254,14 +254,18 @@ int main() {
 	cin >> inFileName;
 
 	ifstream inFile(inFileName);
-	if (!inFile)
-		assert("Error reading input file");
+	if (!inFile.is_open())
+		cout << "Error reading input file" << endl;
 
 	string line;
 	//not sure if this method would store empty lines or not, try and error later
 	while (getline(inFile, line)) {
+		//remove any initial spaces or tabs
 		removeSpaces(line);
-		if (line[0] == ';') continue;
+		if (line[0] == ';' || line == "") continue;
+		//convert it upper case just in case anything is written in lower case
+		convertUpperCase(line);
+		//save in program vector
 		program.PB(line);
 	}
 
@@ -271,13 +275,19 @@ int main() {
 	ofstream outFile("IR codes.txt");
 
 	for (auto line : program) {
+		//if the line has value of X only
+		if (!isalpha(line[0])) {
+			int X = extractX(line);
+			outFile << X << endl;
+			continue;
+		}
 		IR = assembler(line);
+		if (IR == bitset<16>("1111111111111111")) continue;
 		outFile << IR << endl;
 	}
 
 	outFile.close();
 
-	system("pause");
 	return 0;
 }
 
@@ -290,7 +300,6 @@ void storeLabelsOffsets() {
 	int instructionsCount = program.size();
 	rep(i, 0, instructionsCount) {
 		string line = program[i];
-		removeSpaces(line);
 		if (isLabel(line)) {
 			string label = getLabel(line);
 			labels[label] = i;
@@ -299,12 +308,16 @@ void storeLabelsOffsets() {
 }
 
 string getLabel(string s) {
-	if (!isLabel(s)) return "";
 	string label = "";
-	int i = 0;
-	while (s[i] != ':')
-		label += s[i++];
+	while (!s.empty() && s[0] != ':') label += s[0], s.erase(0, 1);
 	return label;
+}
+
+int extractX(string s) {
+	string temp = "";
+	while (!s.empty() && s[0] != ' ' && s[0] != '\t')
+		temp += s[0], s.erase(0, 1);
+	return stoi(temp);
 }
 
 void convertUpperCase(string & str) {
@@ -332,7 +345,7 @@ bitset<4> getOperationOpCode(string op, int i) {
 		else if (op == "NOP")
 			opCode = NOP;
 		else
-			assert("Error! This is not a 0-operand operation in PDP-11");
+			cout << "Error! This is not a 0-operand operation in PDP-11" << endl;
 	}
 
 	//if one-operand
@@ -360,7 +373,7 @@ bitset<4> getOperationOpCode(string op, int i) {
 		else if (op == "RLC")
 			opCode = RLC;
 		else
-			assert("Error! This is not a 1-operand operation in PDP-11");
+			cout << "Error! This is not a 1-operand operation in PDP-11" << endl;
 	}
 
 	//if two-operand
@@ -384,7 +397,7 @@ bitset<4> getOperationOpCode(string op, int i) {
 		else if (op == "CMP")
 			opCode = CMP;
 		else
-			assert("Error! This is not a 2-operand operation in PDP-11");
+			cout << "Error! This is not a 2-operand operation in PDP-11" << endl;
 	}
 
 	//if branching
@@ -404,7 +417,7 @@ bitset<4> getOperationOpCode(string op, int i) {
 		else if (op == "BHS")
 			opCode = BHS;
 		else
-			assert("Error! This is not a branching operation in PDP-11");
+			cout << "Error! This is not a branching operation in PDP-11" << endl;
 	}
 
 	//if bonus
@@ -418,11 +431,11 @@ bitset<4> getOperationOpCode(string op, int i) {
 		else if (op == "IRET")
 			opCode = IRET;
 		else
-			assert("Error! This is not a JSR, RTS, INT or IRET operation in PDP-11");
+			cout << "Error! This is not a JSR, RTS, INT or IRET operation in PDP-11" << endl;
 	}
 
 	else {
-		assert("Invalid value of i, it should be from {0, 1, 2, 3, 4}");
+		cout << "Invalid value of i, it should be from {0, 1, 2, 3, 4}" << endl;
 	}
 
 	return opCode;
@@ -432,8 +445,11 @@ bitset<4> getOperationOpCode(string op, int i) {
 bitset<16> extractOffset(string str) {
 	string label = getLabel(str);
 
-	if (labels.find(label) == labels.end())
-		assert("Error! Label not found");
+	if (labels.find(label) == labels.end()) {
+		cout << "Error! Label not found" << endl;
+		return bitset<16>("1111111111111111");
+	}
+		
 
 	bitset<16> offset = labels[label];
 	offset[15] = 1;
@@ -443,6 +459,13 @@ bitset<16> extractOffset(string str) {
 	offset[11] = 1;
 	offset[10] = 1;
 	return offset;
+}
+
+string extractOpName(string str) {
+	string op = "";
+	while (!str.empty() && str[0] != ' ' && str[0] != '\t')
+		op += str[0], str.erase(0, 1);
+	return op;
 }
 
 // i = 1 ==> 1-operand
@@ -481,7 +504,7 @@ bitset<3> getMode(string instr, int i, int j) {
 			mode = 7;
 	}
 	else
-		assert("Error! Can't decide which mode");
+		cout << "Error! Can't decide which mode" << endl;
 
 	return mode;
 }
@@ -518,7 +541,7 @@ bitset<3> getRegisterNum(string instr, int i, int j) {
 			num = instr[4] - 48;
 	}
 	else
-		assert("Error! Can't decide which number");
+		cout << "Error! Can't decide which number" << endl;
 
 	return num;
 }
@@ -572,8 +595,8 @@ bool isBonus(string  str) {
 }
 
 void removeSpaces(string &instr) {
-	if (instr[0] != ' ') return;
-	while (instr[0] == ' ') {
+	if (instr[0] != ' ' && instr[0] != '\t' ) return;
+	while (instr[0] == ' ' || instr[0] == '\t') {
 		instr.erase(0, 1);
 	}
 }
