@@ -6,7 +6,7 @@ entity full16bitAdder is
   		  Cin       :   IN   std_logic;
 		  F         :   OUT  std_logic_vector (15 downto 0);
 		  Cout      :   OUT  std_logic);
-end entity full16;
+end entity full16bitAdder;
 
 architecture    full16Arch  of full16bitAdder is
 
@@ -20,11 +20,11 @@ signal carry : std_logic_vector (15 downto 0);
 begin
 loop1:  for i in 0 to 15 generate
             g0: if i = 0 generate
-                    f0: fullAdder port map (A(i), B(i), Cin, carry(i), F(i));
+                    f0: full1bitAdder port map (A(i), B(i), Cin, carry(i), F(i));
             end generate g0;
         
             gx: if i > 0 generate
-                    f1: fullAdder port map  (A(i), B(i), carry(i-1), carry(i), F(i));
+                    f1: full1bitAdder port map  (A(i), B(i), carry(i-1), carry(i), F(i));
             end generate gx;
         end generate;
     cout <= carry(15);
