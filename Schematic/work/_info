@@ -358,7 +358,7 @@ R11
 !s100 >4Ze0A_V]MEaJo6knmgJb2
 !i10b 1
 Ecpu
-Z62 w1577028192
+Z62 w1577036837
 R1
 R2
 R3
@@ -366,32 +366,32 @@ Z63 8C:/Users/karashily/Desktop/Arch Project/Schematic/bus.vhd
 Z64 FC:/Users/karashily/Desktop/Arch Project/Schematic/bus.vhd
 l0
 L4
-VQ5fShc0AY=m_gVWk5[neJ0
+V_O6USz=OFJ:G0XKN;a_ZQ2
+!s100 cYm3IdgceBGJBzz2BAH660
 R6
 32
-Z65 !s108 1577028217.167000
+!i10b 1
+Z65 !s108 1577036846.004000
 Z66 !s90 -reportprogress|300|-work|work|-2002|-explicit|C:/Users/karashily/Desktop/Arch Project/Schematic/bus.vhd|
 Z67 !s107 C:/Users/karashily/Desktop/Arch Project/Schematic/bus.vhd|
 R10
 R11
-!s100 0>?gelU6[>OG1z<K5TWi82
-!i10b 1
 Aa_cpu
 R1
 R2
-DEx4 work 3 cpu 0 22 Q5fShc0AY=m_gVWk5[neJ0
-l88
-L15
-V<j1HgZh`9lBMFXEnmf=6i3
+DEx4 work 3 cpu 0 22 _O6USz=OFJ:G0XKN;a_ZQ2
+l173
+L13
+VO:mLDAz9B?93SL=z[U:PE3
+!s100 m7RATjL07egTind??61kg1
 R6
 32
+!i10b 1
 R65
 R66
 R67
 R10
 R11
-!s100 9eV_JUEgoR<zOIhVmJGG<0
-!i10b 1
 Edecoder2
 R12
 R1
@@ -673,62 +673,62 @@ R11
 !s100 k36Ugmf7b:7KN^GkkDUkg0
 !i10b 1
 Eoperation
-R12
+Z112 w1577034551
 R1
 R2
 R3
-Z112 8C:/Users/karashily/Desktop/Arch Project/Schematic/operation.vhd
-Z113 FC:/Users/karashily/Desktop/Arch Project/Schematic/operation.vhd
+Z113 8C:/Users/karashily/Desktop/Arch Project/Schematic/operation.vhd
+Z114 FC:/Users/karashily/Desktop/Arch Project/Schematic/operation.vhd
 l0
 L4
-VOFN1o[>ON1jATQ@3=487a0
+V:FN8gZTU<cKB<;fXlWT0c0
 R6
 32
-Z114 !s108 1577027030.453000
-Z115 !s90 -reportprogress|300|-work|work|-2002|-explicit|C:/Users/karashily/Desktop/Arch Project/Schematic/operation.vhd|
-Z116 !s107 C:/Users/karashily/Desktop/Arch Project/Schematic/operation.vhd|
+Z115 !s108 1577036810.444000
+Z116 !s90 -reportprogress|300|-work|work|-2002|-explicit|C:/Users/karashily/Desktop/Arch Project/Schematic/operation.vhd|
+Z117 !s107 C:/Users/karashily/Desktop/Arch Project/Schematic/operation.vhd|
 R10
 R11
-!s100 _12i6CD6CY3I`_P90mhJQ1
+!s100 KoI>TjIlgi1j`7U;`jKSf0
 !i10b 1
 Aarch
 R1
 R2
-DEx4 work 9 operation 0 22 OFN1o[>ON1jATQ@3=487a0
-l14
-L11
-V?NITEbINE5Vo>NFghSgzd1
+DEx4 work 9 operation 0 22 :FN8gZTU<cKB<;fXlWT0c0
+l15
+L12
+V_jEeAcP7=XQFOWIQnWYDQ3
 R6
 32
-R114
 R115
 R116
+R117
 R10
 R11
-!s100 BV]A>E9FkR3dP9@dIm2lQ3
+!s100 ]AFW5zKCQ3iECZa>WT[lQ2
 !i10b 1
 Eram
-Z117 w1576944394
-Z118 DPx4 ieee 11 numeric_std 0 22 O3PF8EB`?j9=z7KT`fn941
+Z118 w1576944394
+Z119 DPx4 ieee 11 numeric_std 0 22 O3PF8EB`?j9=z7KT`fn941
 R1
 R2
 R3
-Z119 8C:/Users/karashily/Desktop/Arch Project/Schematic/ram.vhd
-Z120 FC:/Users/karashily/Desktop/Arch Project/Schematic/ram.vhd
+Z120 8C:/Users/karashily/Desktop/Arch Project/Schematic/ram.vhd
+Z121 FC:/Users/karashily/Desktop/Arch Project/Schematic/ram.vhd
 l0
 L5
 V9UYa?^4DMafh?Gz=llc5V1
 R6
 32
-Z121 !s108 1577027030.580000
-Z122 !s90 -reportprogress|300|-work|work|-2002|-explicit|C:/Users/karashily/Desktop/Arch Project/Schematic/ram.vhd|
-Z123 !s107 C:/Users/karashily/Desktop/Arch Project/Schematic/ram.vhd|
+Z122 !s108 1577027030.580000
+Z123 !s90 -reportprogress|300|-work|work|-2002|-explicit|C:/Users/karashily/Desktop/Arch Project/Schematic/ram.vhd|
+Z124 !s107 C:/Users/karashily/Desktop/Arch Project/Schematic/ram.vhd|
 R10
 R11
 !s100 V:20bQ3R]fK9hYJ;lD;h<0
 !i10b 1
 Asyncrama
-R118
+R119
 R1
 R2
 DEx4 work 3 ram 0 22 9UYa?^4DMafh?Gz=llc5V1
@@ -737,30 +737,30 @@ L14
 VMT<i];M9dMGi@LoW27M0k2
 R6
 32
-R121
 R122
 R123
+R124
 R10
 R11
 !s100 7f5UGeYhco>HgFOBAc7Nb2
 !i10b 1
 Eregister16
-Z124 w1577026279
+Z125 w1577026279
 R56
 R55
 R1
 R2
 R3
-Z125 8C:/Users/karashily/Desktop/Arch Project/Schematic/register16.vhd
-Z126 FC:/Users/karashily/Desktop/Arch Project/Schematic/register16.vhd
+Z126 8C:/Users/karashily/Desktop/Arch Project/Schematic/register16.vhd
+Z127 FC:/Users/karashily/Desktop/Arch Project/Schematic/register16.vhd
 l0
 L5
 V@Ik>T_]:B1dae1EAdTSiS2
 R6
 32
-Z127 !s108 1577027031.534000
-Z128 !s90 -reportprogress|300|-work|work|-2002|-explicit|C:/Users/karashily/Desktop/Arch Project/Schematic/register16.vhd|
-Z129 !s107 C:/Users/karashily/Desktop/Arch Project/Schematic/register16.vhd|
+Z128 !s108 1577027031.534000
+Z129 !s90 -reportprogress|300|-work|work|-2002|-explicit|C:/Users/karashily/Desktop/Arch Project/Schematic/register16.vhd|
+Z130 !s107 C:/Users/karashily/Desktop/Arch Project/Schematic/register16.vhd|
 R10
 R11
 !s100 OhEU1N=FP]eWd?d:4lAY_0
@@ -776,9 +776,9 @@ L14
 V<kLooK3gQ941;3N<ORl8<2
 R6
 32
-R127
 R128
 R129
+R130
 R10
 R11
 !s100 8Rnl_EmTa>CE:<h1M_3QE0
@@ -788,16 +788,16 @@ R101
 R1
 R2
 R3
-Z130 8C:/Users/karashily/Desktop/Arch Project/Schematic/set_flag.vhd
-Z131 FC:/Users/karashily/Desktop/Arch Project/Schematic/set_flag.vhd
+Z131 8C:/Users/karashily/Desktop/Arch Project/Schematic/set_flag.vhd
+Z132 FC:/Users/karashily/Desktop/Arch Project/Schematic/set_flag.vhd
 l0
 L4
 VAhBi=5TWUUU;Jz12MVdfA1
 R6
 32
-Z132 !s108 1577027031.335000
-Z133 !s90 -reportprogress|300|-work|work|-2002|-explicit|C:/Users/karashily/Desktop/Arch Project/Schematic/set_flag.vhd|
-Z134 !s107 C:/Users/karashily/Desktop/Arch Project/Schematic/set_flag.vhd|
+Z133 !s108 1577027031.335000
+Z134 !s90 -reportprogress|300|-work|work|-2002|-explicit|C:/Users/karashily/Desktop/Arch Project/Schematic/set_flag.vhd|
+Z135 !s107 C:/Users/karashily/Desktop/Arch Project/Schematic/set_flag.vhd|
 R10
 R11
 !s100 zDGV2Vo5?L;lTf8f=bB1?0
@@ -811,9 +811,9 @@ L14
 VjeBWc@z5QCFh3cD^CE3^63
 R6
 32
-R132
 R133
 R134
+R135
 R10
 R11
 !s100 3QNA8Kc7o99dlbae9d2]I2
@@ -823,16 +823,16 @@ R12
 R1
 R2
 R3
-Z135 8C:/Users/karashily/Desktop/Arch Project/Schematic/src_dst_dec.vhd
-Z136 FC:/Users/karashily/Desktop/Arch Project/Schematic/src_dst_dec.vhd
+Z136 8C:/Users/karashily/Desktop/Arch Project/Schematic/src_dst_dec.vhd
+Z137 FC:/Users/karashily/Desktop/Arch Project/Schematic/src_dst_dec.vhd
 l0
 L4
 V^hTOH[8gobODUbzY6OojQ0
 R6
 32
-Z137 !s108 1577027030.702000
-Z138 !s90 -reportprogress|300|-work|work|-2002|-explicit|C:/Users/karashily/Desktop/Arch Project/Schematic/src_dst_dec.vhd|
-Z139 !s107 C:/Users/karashily/Desktop/Arch Project/Schematic/src_dst_dec.vhd|
+Z138 !s108 1577027030.702000
+Z139 !s90 -reportprogress|300|-work|work|-2002|-explicit|C:/Users/karashily/Desktop/Arch Project/Schematic/src_dst_dec.vhd|
+Z140 !s107 C:/Users/karashily/Desktop/Arch Project/Schematic/src_dst_dec.vhd|
 R10
 R11
 !s100 aIT_0X53VlED]CX2RIQNT0
@@ -846,48 +846,48 @@ L11
 Vf0MO:_e=m@`Y`ZY^R_<Lf1
 R6
 32
-R137
 R138
 R139
+R140
 R10
 R11
 !s100 K@C<gIhhg5a_oPgX^J2lK0
 !i10b 1
 Etest
-Z140 w1577031061
+Z141 w1577031061
 R1
 R2
 R3
-Z141 8C:/Users/karashily/Desktop/Arch Project/Schematic/test.vhd
-Z142 FC:/Users/karashily/Desktop/Arch Project/Schematic/test.vhd
+Z142 8C:/Users/karashily/Desktop/Arch Project/Schematic/test.vhd
+Z143 FC:/Users/karashily/Desktop/Arch Project/Schematic/test.vhd
 l0
 L4
 V^74NE48Se?1?=m:@iFeD63
-!s100 a9>lfBlfWHdPEm`M0R5T]3
 R6
 32
-!i10b 1
-Z143 !s108 1577031077.078000
-Z144 !s90 -reportprogress|300|-work|work|-2002|-explicit|C:/Users/karashily/Desktop/Arch Project/Schematic/test.vhd|
-Z145 !s107 C:/Users/karashily/Desktop/Arch Project/Schematic/test.vhd|
+Z144 !s108 1577031077.078000
+Z145 !s90 -reportprogress|300|-work|work|-2002|-explicit|C:/Users/karashily/Desktop/Arch Project/Schematic/test.vhd|
+Z146 !s107 C:/Users/karashily/Desktop/Arch Project/Schematic/test.vhd|
 R10
 R11
+!s100 a9>lfBlfWHdPEm`M0R5T]3
+!i10b 1
 Aarch
 R1
 R2
-Z146 DEx4 work 4 test 0 22 ^74NE48Se?1?=m:@iFeD63
+DEx4 work 4 test 0 22 ^74NE48Se?1?=m:@iFeD63
 l11
 L10
 V9]?:;LZ@M1dcjB8SPDWYn2
-!s100 <m]nZfAzUYWZ6Ofb2>Aed1
 R6
 32
-!i10b 1
-R143
 R144
 R145
+R146
 R10
 R11
+!s100 <m]nZfAzUYWZ6Ofb2>Aed1
+!i10b 1
 Etri_state_buffer
 Z147 w1575912111
 R1

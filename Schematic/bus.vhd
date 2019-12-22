@@ -199,9 +199,9 @@ architecture a_cpu of cpu is
     triz: tri_state_buffer generic map(n=>16) port map(zout, s1(7), bidir);
 
     --
-    AluAdd <= ADDD or s3(1)
-    AluIncA <= IncA or s3(2)
-    AluDecA <= DecA or s3(3)
+    AluAdd <= ADDD or s3(1);
+    AluIncA <= IncA or s3(2);
+    AluDecA <= DecA or s3(3);
 
     -- ALU
     aluentity: ALU port map (bidir, AluB, Zin, NopA,AluAdd,ADC,SUB,SBC,ANDD,ORR,XNORR,AluIncA,AluDecA,Clear,NotA,LSR_B,ROR_B,RRC_B,ASR_B,LSL_B,ROL_B,RLC_B, flagout(1), flagout(0), AluCFout, AluZFout);
