@@ -1,19 +1,10 @@
-{C:/Users/karashily/Desktop/Arch Project/Schematic/decoding_circuit.vhd} {1 {vcom -work work -2002 -explicit {C:/Users/karashily/Desktop/Arch Project/Schematic/decoding_circuit.vhd}
+{C:/Users/karashily/Desktop/Arch Project/Schematic/tri_state_buffer.vhd} {1 {vcom -work work -2002 -explicit {C:/Users/karashily/Desktop/Arch Project/Schematic/tri_state_buffer.vhd}
 Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
 -- Loading package STANDARD
 -- Loading package TEXTIO
 -- Loading package std_logic_1164
--- Compiling entity circ
--- Compiling architecture arch of circ
-
-} {} {}} {C:/Users/karashily/Desktop/Arch Project/Schematic/ram.vhd} {1 {vcom -work work -2002 -explicit {C:/Users/karashily/Desktop/Arch Project/Schematic/ram.vhd}
-Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
--- Loading package STANDARD
--- Loading package TEXTIO
--- Loading package std_logic_1164
--- Loading package NUMERIC_STD
--- Compiling entity ram
--- Compiling architecture syncrama of ram
+-- Compiling entity tri_state_buffer
+-- Compiling architecture a_tri of tri_state_buffer
 
 } {} {}} {C:/Users/karashily/Desktop/Arch Project/Schematic/decoder2x4.vhd} {1 {vcom -work work -2002 -explicit {C:/Users/karashily/Desktop/Arch Project/Schematic/decoder2x4.vhd}
 Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
@@ -23,23 +14,13 @@ Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
 -- Compiling entity decoder2x4
 -- Compiling architecture a_dec of decoder2x4
 
-} {} {}} {C:/Users/karashily/Desktop/Arch Project/Schematic/tri_state_buffer.vhd} {1 {vcom -work work -2002 -explicit {C:/Users/karashily/Desktop/Arch Project/Schematic/tri_state_buffer.vhd}
+} {} {}} {C:/Users/karashily/Desktop/Arch Project/Schematic/decoder3x8.vhd} {1 {vcom -work work -2002 -explicit {C:/Users/karashily/Desktop/Arch Project/Schematic/decoder3x8.vhd}
 Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
 -- Loading package STANDARD
 -- Loading package TEXTIO
 -- Loading package std_logic_1164
--- Compiling entity tri_state_buffer
--- Compiling architecture a_tri of tri_state_buffer
-
-} {} {}} {C:/Users/karashily/Desktop/Arch Project/Schematic/control_store.vhd} {1 {vcom -work work -2002 -explicit {C:/Users/karashily/Desktop/Arch Project/Schematic/control_store.vhd}
-Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
--- Loading package STANDARD
--- Loading package TEXTIO
--- Loading package std_logic_1164
--- Loading package std_logic_arith
--- Loading package STD_LOGIC_UNSIGNED
--- Compiling entity control_store
--- Compiling architecture rom of control_store
+-- Compiling entity decoder3x8
+-- Compiling architecture a_dec of decoder3x8
 
 } {} {}} {C:/Users/karashily/Desktop/Arch Project/Schematic/16_bit_register.vhd} {1 {vcom -work work -2002 -explicit {C:/Users/karashily/Desktop/Arch Project/Schematic/16_bit_register.vhd}
 Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
@@ -51,13 +32,13 @@ Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
 -- Compiling entity register16
 -- Compiling architecture description of register16
 
-} {} {}} {C:/Users/karashily/Desktop/Arch Project/Schematic/decoder3x8.vhd} {1 {vcom -work work -2002 -explicit {C:/Users/karashily/Desktop/Arch Project/Schematic/decoder3x8.vhd}
+} {} {}} {C:/Users/karashily/Desktop/Arch Project/Schematic/bus.vhd} {1 {vcom -work work -2002 -explicit {C:/Users/karashily/Desktop/Arch Project/Schematic/bus.vhd}
 Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
 -- Loading package STANDARD
 -- Loading package TEXTIO
 -- Loading package std_logic_1164
--- Compiling entity decoder3x8
--- Compiling architecture a_dec of decoder3x8
+-- Compiling entity cpu
+-- Compiling architecture a_cpu of cpu
 
 } {} {}} {C:/Users/karashily/Desktop/Arch Project/Schematic/decoder8.vhd} {1 {vcom -work work -2002 -explicit {C:/Users/karashily/Desktop/Arch Project/Schematic/decoder8.vhd}
 Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
@@ -66,13 +47,5 @@ Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
 -- Loading package std_logic_1164
 -- Compiling entity decoder8
 -- Compiling architecture a_dec of decoder8
-
-} {} {}} {C:/Users/karashily/Desktop/Arch Project/Schematic/bus.vhd} {1 {vcom -work work -2002 -explicit {C:/Users/karashily/Desktop/Arch Project/Schematic/bus.vhd}
-Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
--- Loading package STANDARD
--- Loading package TEXTIO
--- Loading package std_logic_1164
--- Compiling entity cpu
--- Compiling architecture a_cpu of cpu
 
 } {} {}}
