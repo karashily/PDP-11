@@ -95,6 +95,14 @@ Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
 -- Compiling entity bitSave
 -- Compiling architecture arch of bitSave
 
+} {} {}} {C:/Users/karashily/Desktop/Arch Project/Schematic/decoding_circuit.vhd} {1 {vcom -work work -2002 -explicit {C:/Users/karashily/Desktop/Arch Project/Schematic/decoding_circuit.vhd}
+Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Compiling entity circ
+-- Compiling architecture arch of circ
+
 } {} {}} {C:/Users/karashily/Desktop/Arch Project/Schematic/microIR_dec.vhd} {1 {vcom -work work -2002 -explicit {C:/Users/karashily/Desktop/Arch Project/Schematic/microIR_dec.vhd}
 Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
 -- Loading package STANDARD
@@ -136,14 +144,6 @@ Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
 -- Loading package std_logic_1164
 -- Compiling entity bitSrcDst
 -- Compiling architecture arch of bitSrcDst
-
-} {} {}} {C:/Users/karashily/Desktop/Arch Project/Schematic/bus.vhd} {1 {vcom -work work -2002 -explicit {C:/Users/karashily/Desktop/Arch Project/Schematic/bus.vhd}
-Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
--- Loading package STANDARD
--- Loading package TEXTIO
--- Loading package std_logic_1164
--- Compiling entity cpu
--- Compiling architecture a_cpu of cpu
 
 } {} {}} {C:/Users/karashily/Desktop/Arch Project/Schematic/decoder2x4.vhd} {1 {vcom -work work -2002 -explicit {C:/Users/karashily/Desktop/Arch Project/Schematic/decoder2x4.vhd}
 Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
