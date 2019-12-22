@@ -1,0 +1,256 @@
+m255
+K3
+13
+cModel Technology
+dD:\College\3rd\3A\[CA] Computer Architecture\Assis\[Arch]Req4-AhmedMohamedZakaria
+Ecpu
+Z0 w1576234406
+Z1 DPx3 std 6 textio 0 22 5>J:;AW>W0[[dW0I6EN1Q0
+Z2 DPx4 ieee 14 std_logic_1164 0 22 5=aWaoGZSMWIcH0i^f`XF1
+Z3 dC:\Users\karashily\Desktop\Arch Project\Schematic
+Z4 8C:/Users/karashily/Desktop/Arch Project/Schematic/bus.vhd
+Z5 FC:/Users/karashily/Desktop/Arch Project/Schematic/bus.vhd
+l0
+L4
+VQ5fShc0AY=m_gVWk5[neJ0
+!s100 0>?gelU6[>OG1z<K5TWi82
+Z6 OV;C;10.1d;51
+32
+!i10b 1
+Z7 !s108 1577010557.784000
+Z8 !s90 -reportprogress|300|-work|work|-2002|-explicit|C:/Users/karashily/Desktop/Arch Project/Schematic/bus.vhd|
+Z9 !s107 C:/Users/karashily/Desktop/Arch Project/Schematic/bus.vhd|
+Z10 o-work work -2002 -explicit -O0
+Z11 tExplicit 1
+Aa_cpu
+R1
+R2
+DEx4 work 3 cpu 0 22 Q5fShc0AY=m_gVWk5[neJ0
+l60
+L15
+V3L64XRHZ2KPlWDRL5h0MX3
+!s100 TWo4oalHfbCzN356oQ1KL0
+R6
+32
+!i10b 1
+R7
+R8
+R9
+R10
+R11
+Edecoder2x4
+Z12 w1576931364
+R1
+R2
+R3
+Z13 8C:/Users/karashily/Desktop/Arch Project/Schematic/decoder2x4.vhd
+Z14 FC:/Users/karashily/Desktop/Arch Project/Schematic/decoder2x4.vhd
+l0
+L4
+Vf;n]GJeBM:3DKiD;ES>=W0
+R6
+32
+Z15 !s108 1577010557.121000
+Z16 !s90 -reportprogress|300|-work|work|-2002|-explicit|C:/Users/karashily/Desktop/Arch Project/Schematic/decoder2x4.vhd|
+Z17 !s107 C:/Users/karashily/Desktop/Arch Project/Schematic/decoder2x4.vhd|
+R10
+R11
+!s100 eY9C]WR5SmlbDHaI:0QYJ2
+!i10b 1
+Aa_dec
+R1
+R2
+DEx4 work 10 decoder2x4 0 22 f;n]GJeBM:3DKiD;ES>=W0
+l11
+L10
+Vf[NPVdj_X@;m_Tg<j_^SX2
+R6
+32
+R15
+R16
+R17
+R10
+R11
+!s100 D>l57mE`if^[W9Y[H@fS^3
+!i10b 1
+Edecoder3x8
+Z18 w1576930306
+R1
+R2
+R3
+Z19 8C:/Users/karashily/Desktop/Arch Project/Schematic/decoder3x8.vhd
+Z20 FC:/Users/karashily/Desktop/Arch Project/Schematic/decoder3x8.vhd
+l0
+L4
+V363eBh0YBU7kAQ1P:i69K1
+R6
+32
+Z21 !s108 1577010557.257000
+Z22 !s90 -reportprogress|300|-work|work|-2002|-explicit|C:/Users/karashily/Desktop/Arch Project/Schematic/decoder3x8.vhd|
+Z23 !s107 C:/Users/karashily/Desktop/Arch Project/Schematic/decoder3x8.vhd|
+R10
+R11
+!s100 ]EzZP1fb`A0maW=ZG;m8I2
+!i10b 1
+Aa_dec
+R1
+R2
+DEx4 work 10 decoder3x8 0 22 363eBh0YBU7kAQ1P:i69K1
+l11
+L10
+V9b;A46mO0HFDcA<U>]edT0
+R6
+32
+R21
+R22
+R23
+R10
+R11
+!s100 m<QblO6hOVJPSePE2<5mV0
+!i10b 1
+Edecoder8
+Z24 w1576202210
+R1
+R2
+R3
+Z25 8C:/Users/karashily/Desktop/Arch Project/Schematic/decoder8.vhd
+Z26 FC:/Users/karashily/Desktop/Arch Project/Schematic/decoder8.vhd
+l0
+L4
+V6d_jNVdZkkb^FMofIDzeM1
+R6
+32
+Z27 !s108 1577010557.376000
+Z28 !s90 -reportprogress|300|-work|work|-2002|-explicit|C:/Users/karashily/Desktop/Arch Project/Schematic/decoder8.vhd|
+Z29 !s107 C:/Users/karashily/Desktop/Arch Project/Schematic/decoder8.vhd|
+R10
+R11
+!s100 je5jdczjYDSQ;Ehc`Rz7M2
+!i10b 1
+Aa_dec
+R1
+R2
+DEx4 work 8 decoder8 0 22 6d_jNVdZkkb^FMofIDzeM1
+l11
+L10
+VdYU6>Vld@nKV?0<?Ac>1@2
+R6
+32
+R27
+R28
+R29
+R10
+R11
+!s100 n><;1C[B9klUOJaYY>_a]2
+!i10b 1
+Eram
+Z30 w1576269863
+Z31 DPx4 ieee 11 numeric_std 0 22 O3PF8EB`?j9=z7KT`fn941
+R1
+R2
+R3
+Z32 8C:/Users/karashily/Desktop/Arch Project/Schematic/ram.vhd
+Z33 FC:/Users/karashily/Desktop/Arch Project/Schematic/ram.vhd
+l0
+L5
+V9UYa?^4DMafh?Gz=llc5V1
+R6
+32
+Z34 !s108 1577010557.502000
+Z35 !s90 -reportprogress|300|-work|work|-2002|-explicit|C:/Users/karashily/Desktop/Arch Project/Schematic/ram.vhd|
+Z36 !s107 C:/Users/karashily/Desktop/Arch Project/Schematic/ram.vhd|
+R10
+R11
+!s100 V:20bQ3R]fK9hYJ;lD;h<0
+!i10b 1
+Asyncrama
+R31
+R1
+R2
+DEx4 work 3 ram 0 22 9UYa?^4DMafh?Gz=llc5V1
+l27
+L14
+VazncFOK8^ho@4FhlT2?a23
+R6
+32
+R34
+R35
+R36
+R10
+R11
+!s100 5>FXYdAY78Ih;4;HKK1Hf2
+!i10b 1
+Eregister16
+Z37 w1577010284
+Z38 DPx4 ieee 18 std_logic_unsigned 0 22 RYmj;=TK`k=k>D@Cz`zoB3
+Z39 DPx4 ieee 15 std_logic_arith 0 22 4`Y?g_lkdn;7UL9IiJck01
+R1
+R2
+R3
+Z40 8C:/Users/karashily/Desktop/Arch Project/Schematic/16_bit_register.vhd
+Z41 FC:/Users/karashily/Desktop/Arch Project/Schematic/16_bit_register.vhd
+l0
+L5
+V@Ik>T_]:B1dae1EAdTSiS2
+R6
+32
+Z42 !s108 1577010556.712000
+Z43 !s90 -reportprogress|300|-work|work|-2002|-explicit|C:/Users/karashily/Desktop/Arch Project/Schematic/16_bit_register.vhd|
+Z44 !s107 C:/Users/karashily/Desktop/Arch Project/Schematic/16_bit_register.vhd|
+R10
+R11
+!s100 OhEU1N=FP]eWd?d:4lAY_0
+!i10b 1
+Adescription
+R38
+R39
+R1
+R2
+DEx4 work 10 register16 0 22 @Ik>T_]:B1dae1EAdTSiS2
+l16
+L14
+V<kLooK3gQ941;3N<ORl8<2
+R6
+32
+R42
+R43
+R44
+R10
+R11
+!s100 8Rnl_EmTa>CE:<h1M_3QE0
+!i10b 1
+Etri_state_buffer
+Z45 w1575912111
+R1
+R2
+R3
+Z46 8C:/Users/karashily/Desktop/Arch Project/Schematic/tri_state_buffer.vhd
+Z47 FC:/Users/karashily/Desktop/Arch Project/Schematic/tri_state_buffer.vhd
+l0
+L4
+VCMS:3UT_0RhliZg6E7IF60
+R6
+32
+Z48 !s108 1577010557.638000
+Z49 !s90 -reportprogress|300|-work|work|-2002|-explicit|C:/Users/karashily/Desktop/Arch Project/Schematic/tri_state_buffer.vhd|
+Z50 !s107 C:/Users/karashily/Desktop/Arch Project/Schematic/tri_state_buffer.vhd|
+R10
+R11
+!s100 @W8bCMh9:R>1j4KEfDc`i1
+!i10b 1
+Aa_tri
+R1
+R2
+DEx4 work 16 tri_state_buffer 0 22 CMS:3UT_0RhliZg6E7IF60
+l12
+L11
+VELfi8cf[lbPl3YMl]d5NB1
+R6
+32
+R48
+R49
+R50
+R10
+R11
+!s100 @5`mCMXY]NEX<?`5@_U_;1
+!i10b 1

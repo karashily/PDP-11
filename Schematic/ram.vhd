@@ -13,16 +13,8 @@ END ENTITY ram;
 
 ARCHITECTURE syncrama OF ram IS
 
-	TYPE ram_type IS ARRAY(0 TO 63) OF std_logic_vector(15 DOWNTO 0);
-	SIGNAL ram : ram_type := (
-   0     => X"00C3",
-   1     => X"0038",
-   2     => X"0000",
-  16#38# => X"00C3",
-  16#39# => X"0000",
-  16#3A# => X"0000",
-  OTHERS => X"00FF"
-);
+	TYPE ram_type IS ARRAY(0 TO 4095) OF std_logic_vector(15 DOWNTO 0);
+	SIGNAL ram : ram_type ;
 	
 	BEGIN
 		PROCESS(clk) IS
@@ -35,3 +27,4 @@ ARCHITECTURE syncrama OF ram IS
 		END PROCESS;
 		dataout <= ram(to_integer(unsigned(address)));
 END syncrama;
+
