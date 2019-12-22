@@ -35,14 +35,14 @@ begin
     one <= "0000000000000001";
     NegBAdder    : full16bitAdder  port map (NotB, one, '0', NegB, CB);
     
-    IncA_Adder   : full16bitAdder  port map (A, "0000000000000001", Cin, FA1, CA1);
+    IncA_Adder   : full16bitAdder  port map (A, "0000000000000001", '0', FA1, CA1);
     DecA_Adder   : full16bitAdder  port map (A, "1111111111111111", '0', FANeg1, CANeg1);
     
     ADDD_Adder   : full16bitAdder  port map (A, B, '0', FAB, CAB);
     ADC_Adder    : full16bitAdder  port map (A, B, Cin, FABC, CABC);
     
     SUB_Adder    : full16bitAdder  port map (A, NegB, '0', FANegB, CANegB);
-    SBC_Adder_C0 : full16bitAdder  port map (FANegB, "1111111111111111", CANegB, FANegBNegC, CANegBNegC); 
+    SBC_Adder_C0 : full16bitAdder  port map (A, NotB, '1', FANegBNegC, CANegBNegC); 
     
     ZFMux        : mux4x1 port map ('0', '1', ZFin, ZFin, en, oring, ZFMout);
     
@@ -51,7 +51,7 @@ begin
                FAB when ADDD = '1' else
                FABC when ADC = '1' else
                FANegB when SUB = '1' or (SBC = '1' and Cin = '1') else
-               FANegBNegC when SBC = '1' else
+               FANegBNegC when SBC = '1' and Cin = '0' else
                A and B when ANDD = '1' else
                A or B when ORR =  '1' else
                A xnor B when XNORR = '1' else
