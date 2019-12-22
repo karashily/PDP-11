@@ -31,6 +31,14 @@ Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
 -- Compiling entity ram
 -- Compiling architecture syncrama of ram
 
+} {} {}} {C:/Users/karashily/Desktop/Arch Project/Schematic/operation.vhd} {1 {vcom -work work -2002 -explicit {C:/Users/karashily/Desktop/Arch Project/Schematic/operation.vhd}
+Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Compiling entity operation
+-- Compiling architecture arch of operation
+
 } {} {}} {C:/Users/karashily/Desktop/Arch Project/Schematic/wide.vhd} {1 {vcom -work work -2002 -explicit {C:/Users/karashily/Desktop/Arch Project/Schematic/wide.vhd}
 Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
 -- Loading package STANDARD
