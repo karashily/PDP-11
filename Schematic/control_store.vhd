@@ -11,7 +11,7 @@ end control_store;
 
 architecture rom of control_store is
 
- 
+constant empty: std_logic_vector (24 downto 0) := "0000000000000000000000000";
 constant address_0: std_logic_vector (24 downto 0) := "0000000011000001010000001";
 constant address_1: std_logic_vector (24 downto 0) := "0000100011100000000000000";
 constant address_2: std_logic_vector (24 downto 0) := "0001100000011100100101000";
@@ -40,8 +40,8 @@ constant address_27: std_logic_vector (24 downto 0) := "101111111000100000000011
 type rom_array is array (natural range <>) of std_logic_vector (24 downto 0);
 constant rom: rom_array := (
 address_0, address_1, address_2, address_3, address_4, address_5, 
-address_6, address_7, address_10, address_11, address_12, address_13, 
-address_14, address_15, address_16, address_17, address_20, address_21, 
+address_6, address_7,empty,empty,address_10, address_11, address_12, address_13, 
+address_14, address_15, address_16, address_17,empty,empty, address_20, address_21, 
 address_22, address_23, address_24, address_25, address_26, address_27
 );
 
@@ -51,9 +51,7 @@ begin
     variable b0_2 : integer;
     variable b3_4 : integer;
     begin
-      b0_2 :=conv_integer(address(2 downto 0));
-      b3_4 :=conv_integer(address(4 downto 3));
-      index := b3_4 * 7 + b3_4 + b0_2;
+      index := conv_integer(address);
       output <= rom(index);
     end process;
   end rom; 
