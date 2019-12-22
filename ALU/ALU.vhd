@@ -5,7 +5,7 @@ entity ALU is
     port (A, B             :       in std_logic_vector (15 downto 0);
           F                :       out std_logic_vector (15 downto 0);
           NopA,ADDD,ADC,SUB,SBC,ANDD,ORR,XNORR,IncA,DecA,Clear,NotA,LSR_B,ROR_B,RRC_B,ASR_B,LSL_B,ROL_B,RLC_B : in std_logic;
-          Cin, ZFin, en    :       in std_logic;
+          Cin, ZFin        :       in std_logic;
           Cout, ZFout      :       out std_logic);
 end entity ALU;
 
@@ -26,10 +26,11 @@ end component mux4x1;
 
 signal NotB, NegB, FA1, FAB, FABC, FANegB, FANegBNegC, FANeg1, Fout, one    : std_logic_vector (15 downto 0);   
 signal CB, NotC, CA1, CAB, CABC, CANegB, CANegBNegC, CANeg1      : std_logic;
-signal ZFMout, oring, tempCout   :   std_logic;
+signal ZFMout, oring, tempCout, en   :   std_logic;
 
 
 begin
+    
     NotB <= not B;
     NotC <= not Cin;
     one <= "0000000000000001";
@@ -46,7 +47,9 @@ begin
     
     ZFMux        : mux4x1 port map ('0', '1', ZFin, ZFin, en, oring, ZFMout);
     
-    
+    en <= NopA or ADDD or ADC or SUB or SBC or ANDD or ORR or XNORR or IncA or DecA or Clear
+            or NotA or LSR_B or ROR_B or RRC_B or ASR_B or LSL_B or ROL_B or RLC_B;
+
     Fout    <= A when NopA = '1' else 
                FAB when ADDD = '1' else
                FABC when ADC = '1' else
