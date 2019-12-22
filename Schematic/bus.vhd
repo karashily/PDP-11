@@ -67,20 +67,20 @@ architecture a_cpu of cpu is
   signal ram_data_out: std_logic_vector(15 downto 0);
   
   begin
-    r0: register16 generic map(n=>16) port map(clk,'0',dst_dec(0),bidir,r0out);
-    r1: register16 generic map(n=>16) port map(clk,'0',dst_dec(1),bidir,r1out);
-    r2: register16 generic map(n=>16) port map(clk,'0',dst_dec(2),bidir,r2out);
-    r3: register16 generic map(n=>16) port map(clk,'0',dst_dec(3),bidir,r3out);
-    r4: register16 generic map(n=>16) port map(clk,'0',dst_dec(4),bidir,r4out);
-    r5: register16 generic map(n=>16) port map(clk,'0',dst_dec(5),bidir,r5out);
-    r6: register16 generic map(n=>16) port map(clk,'0',dst_dec(6),bidir,r6out);
-    r7: register16 generic map(n=>16) port map(clk,'0',dst_dec(7),bidir,r7out);
+    r0: register16 port map(bidir,dst_dec(0),'0',clk,r0out);
+    r1: register16 port map(bidir,dst_dec(1),'0',clk,r1out);
+    r2: register16 port map(bidir,dst_dec(2),'0',clk,r2out);
+    r3: register16 port map(bidir,dst_dec(3),'0',clk,r3out);
+    r4: register16 port map(bidir,dst_dec(4),'0',clk,r4out);
+    r5: register16 port map(bidir,dst_dec(5),'0',clk,r5out);
+    r6: register16 port map(bidir,dst_dec(6),'0',clk,r6out);
+    r7: register16 port map(bidir,dst_dec(7),'0',clk,r7out);
     
-    dest: register16 generic map(n=>16) port map(clk,'0',dst_dec(3),bidir,destout);
-    source: register16 generic map(n=>16) port map(clk,'0',dst_dec(3),bidir,sourceout);
+    dest: register16 port map(bidir,dst_dec(7),'0',clk,destout);
+    source: register16 port map(bidir,dst_dec(7),'0',clk,sourceout);
 
-    mdr: register16 generic map(n=>16) port map(clk,'0',mdr_load,mdrin,mdrout);
-    mar: register16 generic map(n=>16) port map(clk,'0',dst_dec(5),bidir,marout);
+    mdr: register16 port map(bidir,dst_dec(7),'0',clk,mdrout);
+    mar: register16 port map(bidir,dst_dec(7),'0',clk,marout);
     
     tri0: tri_state_buffer generic map(n=>16) port map(r0out, src_dec(0), bidir);
     tri1: tri_state_buffer generic map(n=>16) port map(r1out, src_dec(1), bidir);
