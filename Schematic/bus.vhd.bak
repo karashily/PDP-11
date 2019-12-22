@@ -210,7 +210,7 @@ architecture a_cpu of cpu is
 
     flag: register16 port map(flagin,'1','0',clk,flagout);
 
-    mdr: register16 port map(bidir,dst_dec(7),'0',clk,mdrout);
+    mdr: register16 port map(mdrin,mdr_load,'0',clk,mdrout);
     mar: register16 port map(bidir,s6(2),'0',clk,marout);
 
     -- ALU temp registers
@@ -286,7 +286,7 @@ architecture a_cpu of cpu is
     
     
     -- offset out in case of branching
-    offset <= "000000"&irout(9 downto 0)
+    offset <= "000000"&irout(9 downto 0);
     trioffset: tri_state_buffer generic map(n=>16) port map(offset, s6(5), bidir);
 
 

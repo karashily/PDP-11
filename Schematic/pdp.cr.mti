@@ -14,14 +14,6 @@ Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
 -- Compiling entity bitDstMode
 -- Compiling architecture arch of bitDstMode
 
-} {} {}} {C:/Users/karashily/Desktop/Arch Project/Schematic/tri_state_buffer.vhd} {1 {vcom -work work -2002 -explicit {C:/Users/karashily/Desktop/Arch Project/Schematic/tri_state_buffer.vhd}
-Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
--- Loading package STANDARD
--- Loading package TEXTIO
--- Loading package std_logic_1164
--- Compiling entity tri_state_buffer
--- Compiling architecture a_tri of tri_state_buffer
-
 } {} {}} {C:/Users/karashily/Desktop/Arch Project/Schematic/ram.vhd} {1 {vcom -work work -2002 -explicit {C:/Users/karashily/Desktop/Arch Project/Schematic/ram.vhd}
 Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
 -- Loading package STANDARD
@@ -31,13 +23,13 @@ Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
 -- Compiling entity ram
 -- Compiling architecture syncrama of ram
 
-} {} {}} {C:/Users/karashily/Desktop/Arch Project/Schematic/operation.vhd} {1 {vcom -work work -2002 -explicit {C:/Users/karashily/Desktop/Arch Project/Schematic/operation.vhd}
+} {} {}} {C:/Users/karashily/Desktop/Arch Project/Schematic/tri_state_buffer.vhd} {1 {vcom -work work -2002 -explicit {C:/Users/karashily/Desktop/Arch Project/Schematic/tri_state_buffer.vhd}
 Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
 -- Loading package STANDARD
 -- Loading package TEXTIO
 -- Loading package std_logic_1164
--- Compiling entity operation
--- Compiling architecture arch of operation
+-- Compiling entity tri_state_buffer
+-- Compiling architecture a_tri of tri_state_buffer
 
 } {} {}} {C:/Users/karashily/Desktop/Arch Project/Schematic/wide.vhd} {1 {vcom -work work -2002 -explicit {C:/Users/karashily/Desktop/Arch Project/Schematic/wide.vhd}
 Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
@@ -46,6 +38,14 @@ Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
 -- Loading package std_logic_1164
 -- Compiling entity wide
 -- Compiling architecture arch of wide
+
+} {} {}} {C:/Users/karashily/Desktop/Arch Project/Schematic/operation.vhd} {1 {vcom -work work -2002 -explicit {C:/Users/karashily/Desktop/Arch Project/Schematic/operation.vhd}
+Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Compiling entity operation
+-- Compiling architecture arch of operation
 
 } {} {}} {C:/Users/karashily/Desktop/Arch Project/Schematic/decoder3x8.vhd} {1 {vcom -work work -2002 -explicit {C:/Users/karashily/Desktop/Arch Project/Schematic/decoder3x8.vhd}
 Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
@@ -63,13 +63,13 @@ Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
 -- Compiling entity bitRegDirIndir
 -- Compiling architecture arch of bitRegDirIndir
 
-} {} {}} {C:/Users/karashily/Desktop/Arch Project/Schematic/bitSrcMode.vhd} {1 {vcom -work work -2002 -explicit {C:/Users/karashily/Desktop/Arch Project/Schematic/bitSrcMode.vhd}
+} {} {}} {C:/Users/karashily/Desktop/Arch Project/Schematic/halfAdder.vhd} {1 {vcom -work work -2002 -explicit {C:/Users/karashily/Desktop/Arch Project/Schematic/halfAdder.vhd}
 Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
 -- Loading package STANDARD
 -- Loading package TEXTIO
 -- Loading package std_logic_1164
--- Compiling entity bitSrcMode
--- Compiling architecture arch of bitSrcMode
+-- Compiling entity halfAdder
+-- Compiling architecture halfAdderArch of halfAdder
 
 } {} {}} {C:/Users/karashily/Desktop/Arch Project/Schematic/branching.vhd} {1 {vcom -work work -2002 -explicit {C:/Users/karashily/Desktop/Arch Project/Schematic/branching.vhd}
 Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
@@ -79,13 +79,13 @@ Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
 -- Compiling entity branching
 -- Compiling architecture arch of branching
 
-} {} {}} {C:/Users/karashily/Desktop/Arch Project/Schematic/set_flag.vhd} {1 {vcom -work work -2002 -explicit {C:/Users/karashily/Desktop/Arch Project/Schematic/set_flag.vhd}
+} {} {}} {C:/Users/karashily/Desktop/Arch Project/Schematic/bitSrcMode.vhd} {1 {vcom -work work -2002 -explicit {C:/Users/karashily/Desktop/Arch Project/Schematic/bitSrcMode.vhd}
 Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
 -- Loading package STANDARD
 -- Loading package TEXTIO
 -- Loading package std_logic_1164
--- Compiling entity setFlag
--- Compiling architecture arch of setFlag
+-- Compiling entity bitSrcMode
+-- Compiling architecture arch of bitSrcMode
 
 } {} {}} {C:/Users/karashily/Desktop/Arch Project/Schematic/src_dst_dec.vhd} {1 {vcom -work work -2002 -explicit {C:/Users/karashily/Desktop/Arch Project/Schematic/src_dst_dec.vhd}
 Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
@@ -94,6 +94,14 @@ Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
 -- Loading package std_logic_1164
 -- Compiling entity src_dst_dec
 -- Compiling architecture a_dec of src_dst_dec
+
+} {} {}} {C:/Users/karashily/Desktop/Arch Project/Schematic/set_flag.vhd} {1 {vcom -work work -2002 -explicit {C:/Users/karashily/Desktop/Arch Project/Schematic/set_flag.vhd}
+Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Compiling entity setFlag
+-- Compiling architecture arch of setFlag
 
 } {} {}} {C:/Users/karashily/Desktop/Arch Project/Schematic/decoder8.vhd} {1 {vcom -work work -2002 -explicit {C:/Users/karashily/Desktop/Arch Project/Schematic/decoder8.vhd}
 Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
@@ -127,6 +135,14 @@ Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
 -- Compiling entity mir_dec
 -- Compiling architecture arch of mir_dec
 
+} {} {}} {C:/Users/karashily/Desktop/Arch Project/Schematic/decrementor.vhd} {1 {vcom -work work -2002 -explicit {C:/Users/karashily/Desktop/Arch Project/Schematic/decrementor.vhd}
+Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Compiling entity decrementor
+-- Compiling architecture decrementorArch of decrementor
+
 } {} {}} {C:/Users/karashily/Desktop/Arch Project/Schematic/bitInstSrcDst.vhd} {1 {vcom -work work -2002 -explicit {C:/Users/karashily/Desktop/Arch Project/Schematic/bitInstSrcDst.vhd}
 Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
 -- Loading package STANDARD
@@ -134,6 +150,22 @@ Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
 -- Loading package std_logic_1164
 -- Compiling entity bitInstSrcDst
 -- Compiling architecture arch of bitInstSrcDst
+
+} {} {}} {C:/Users/karashily/Desktop/Arch Project/Schematic/full16bitAdder.vhd} {1 {vcom -work work -2002 -explicit {C:/Users/karashily/Desktop/Arch Project/Schematic/full16bitAdder.vhd}
+Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Compiling entity full16bitAdder
+-- Compiling architecture full16Arch of full16bitAdder
+
+} {} {}} {C:/Users/karashily/Desktop/Arch Project/Schematic/bus.vhd} {1 {vcom -work work -2002 -explicit {C:/Users/karashily/Desktop/Arch Project/Schematic/bus.vhd}
+Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Compiling entity cpu
+-- Compiling architecture a_cpu of cpu
 
 } {} {}} {C:/Users/karashily/Desktop/Arch Project/Schematic/dec3to8.vhd} {1 {vcom -work work -2002 -explicit {C:/Users/karashily/Desktop/Arch Project/Schematic/dec3to8.vhd}
 Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
@@ -150,6 +182,22 @@ Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
 -- Loading package std_logic_1164
 -- Compiling entity bitSrcDst
 -- Compiling architecture arch of bitSrcDst
+
+} {} {}} {C:/Users/karashily/Desktop/Arch Project/Schematic/ALU.vhd} {1 {vcom -work work -2002 -explicit {C:/Users/karashily/Desktop/Arch Project/Schematic/ALU.vhd}
+Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Compiling entity ALU
+-- Compiling architecture ALU_arch of ALU
+
+} {} {}} {C:/Users/karashily/Desktop/Arch Project/Schematic/full1bitAdder.vhd} {1 {vcom -work work -2002 -explicit {C:/Users/karashily/Desktop/Arch Project/Schematic/full1bitAdder.vhd}
+Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Compiling entity full1bitAdder
+-- Compiling architecture fullAdderArch of full1bitAdder
 
 } {} {}} {C:/Users/karashily/Desktop/Arch Project/Schematic/register16.vhd} {1 {vcom -work work -2002 -explicit {C:/Users/karashily/Desktop/Arch Project/Schematic/register16.vhd}
 Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
@@ -169,14 +217,6 @@ Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
 -- Compiling entity decoder2x4
 -- Compiling architecture a_dec of decoder2x4
 
-} {} {}} {C:/Users/karashily/Desktop/Arch Project/Schematic/bitDirIndir.vhd} {1 {vcom -work work -2002 -explicit {C:/Users/karashily/Desktop/Arch Project/Schematic/bitDirIndir.vhd}
-Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
--- Loading package STANDARD
--- Loading package TEXTIO
--- Loading package std_logic_1164
--- Compiling entity bitDirIndir
--- Compiling architecture arch of bitDirIndir
-
 } {} {}} {C:/Users/karashily/Desktop/Arch Project/Schematic/dec.vhd} {1 {vcom -work work -2002 -explicit {C:/Users/karashily/Desktop/Arch Project/Schematic/dec.vhd}
 Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
 -- Loading package STANDARD
@@ -184,6 +224,14 @@ Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
 -- Loading package std_logic_1164
 -- Compiling entity decoder2
 -- Compiling architecture bhv of decoder2
+
+} {} {}} {C:/Users/karashily/Desktop/Arch Project/Schematic/bitDirIndir.vhd} {1 {vcom -work work -2002 -explicit {C:/Users/karashily/Desktop/Arch Project/Schematic/bitDirIndir.vhd}
+Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Compiling entity bitDirIndir
+-- Compiling architecture arch of bitDirIndir
 
 } {} {}} {C:/Users/karashily/Desktop/Arch Project/Schematic/mux2x1.vhd} {1 {vcom -work work -2002 -explicit {C:/Users/karashily/Desktop/Arch Project/Schematic/mux2x1.vhd}
 Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
@@ -202,5 +250,13 @@ Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
 -- Loading package STD_LOGIC_UNSIGNED
 -- Compiling entity control_store
 -- Compiling architecture rom of control_store
+
+} {} {}} {C:/Users/karashily/Desktop/Arch Project/Schematic/incrementor.vhd} {1 {vcom -work work -2002 -explicit {C:/Users/karashily/Desktop/Arch Project/Schematic/incrementor.vhd}
+Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Compiling entity incrementor
+-- Compiling architecture incrementorArch of incrementor
 
 } {} {}}

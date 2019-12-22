@@ -38,8 +38,9 @@ architecture arch of circ is
         end component;
     
 
-    signal microAR, current_address, next_address_branch_out: std_logic_vector(4 downto 0);
+    signal current_address, next_address_branch_out: std_logic_vector(4 downto 0);
     signal microIR : std_logic_vector(24 downto 0);
+    signal microAR : std_logic_vector(4 downto 0) := "00111";
     signal s11,s33,s44,s55,s66,s77 : std_logic_vector(7 downto 0);
     signal s22 : std_logic_vector(3 downto 0);
 

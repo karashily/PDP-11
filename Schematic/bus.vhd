@@ -113,8 +113,8 @@ architecture a_cpu of cpu is
 
   signal irout: std_logic_vector(15 downto 0);
   
-  signal flagout: std_logic_vector(15 downto 0);
-  signal flagin: std_logic_vector(15 downto 0);
+  signal flagout: std_logic_vector(15 downto 0) := "0000000000000000";
+  signal flagin: std_logic_vector(15 downto 0) := "0000000000000000";
 
   signal src_dec: std_logic_vector(7 downto 0);
   signal dst_dec: std_logic_vector(7 downto 0);
@@ -153,9 +153,9 @@ architecture a_cpu of cpu is
   signal Rdst_out: std_logic;
   signal Rdst_in: std_logic;
 
-  signal setflagout: std_logic_vector(15 downto 0);
-  signal AluCFout: std_logic;
-  signal AluZFout: std_logic;
+  signal setflagout: std_logic_vector(15 downto 0) := "0000000000000000";
+  signal AluCFout: std_logic := '0';
+  signal AluZFout: std_logic := '0';
 
   signal Rsrc_out_dec_out: std_logic_vector(7 downto 0);
   signal Rsrc_in_dec_out: std_logic_vector(7 downto 0);
@@ -210,7 +210,7 @@ architecture a_cpu of cpu is
 
     flag: register16 port map(flagin,'1','0',clk,flagout);
 
-    mdr: register16 port map(bidir,dst_dec(7),'0',clk,mdrout);
+    mdr: register16 port map(mdrin,mdr_load,'0',clk,mdrout);
     mar: register16 port map(bidir,s6(2),'0',clk,marout);
 
     -- ALU temp registers
