@@ -85,6 +85,14 @@ architecture a_cpu of cpu is
     );
   end component;
 
+  component incrementor is
+    port (inp       :   in std_logic_vector (15 downto 0);
+          en        :   in std_logic;
+          op        :   out std_logic_vector (15 downto 0));
+  end component;
+
+  
+
   signal r0out: std_logic_vector(15 downto 0);
   signal r1out: std_logic_vector(15 downto 0);
   signal r2out: std_logic_vector(15 downto 0);
@@ -170,6 +178,13 @@ architecture a_cpu of cpu is
 
   signal AluAdd, AluIncA, AluDecA: std_logic;
 
+  signal PCin: std_logic_vector(15 downto 0);
+  signal PCincOut: std_logic_vector(15 downto 0);
+
+  signal PCload: std_logic;
+
+  signal offset: std_logic_vector(15 downto 0);
+
   begin
     -- registers
     r0: register16 port map(bidir,reg_load(0),'0',clk,r0out);
@@ -179,8 +194,15 @@ architecture a_cpu of cpu is
     r4: register16 port map(bidir,reg_load(4),'0',clk,r4out);
     r5: register16 port map(bidir,reg_load(5),'0',clk,r5out);
     r6: register16 port map(bidir,reg_load(6),'0',clk,r6out);
-    r7: register16 port map(bidir,reg_load(7),'0',clk,r7out);
-    
+    r7: register16 port map(PCin,PCload,'0',clk,r7out);
+
+    PCload <= reg_load(7) or s5(2);
+
+    PCin <= bidir when reg_load(7) = '1'
+      else PCincOut when s5(2) = '1';
+
+    PCinc: incrementor port map(r7out, s5(1), PCincOut);
+
     dest: register16 port map(bidir, dest_in, '0', clk, destout);
     source: register16 port map(bidir, source_in, '0', clk, sourceout);
 
@@ -261,7 +283,14 @@ architecture a_cpu of cpu is
     trisource: tri_state_buffer generic map(n=>16) port map(sourceout, source_out, bidir);
 
     trimdrout: tri_state_buffer generic map(n=>16) port map(mdrout, s1(6), bidir);
-      
+    
+    
+    -- offset out in case of branching
+    offset <= "000000"&irout(9 downto 0);
+    trioffset: tri_state_buffer generic map(n=>16) port map(offset, s6(5), bidir);
+
+
+    -- ram
     ram1: ram port map(clk, wr, marout(11 downto 0), mdrout, ram_data_out); 
     
     mdr_load <= rd or s6(3);
