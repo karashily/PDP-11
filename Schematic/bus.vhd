@@ -7,8 +7,6 @@ entity cpu is
       dst_sel: in std_logic_vector(2 downto 0);
       src_enable: in std_logic;
       dst_enable: in std_logic;
-      wr: in std_logic;
-      rd: in std_logic;
       clk: in std_logic);
 end cpu;
 
@@ -115,6 +113,9 @@ architecture a_cpu of cpu is
   
   signal ram_data_out: std_logic_vector(15 downto 0);
   
+  signal wr: std_logic;
+  signal rd: std_logic;
+
   signal s1,s3,s4,s5,s6,s7: std_logic_vector(7 downto 0);
   signal s2 : std_logic_vector(3 downto 0);
 
@@ -188,7 +189,7 @@ architecture a_cpu of cpu is
     flag: register16 port map(flagin,'1','0',clk,flagout);
 
     mdr: register16 port map(bidir,dst_dec(7),'0',clk,mdrout);
-    mar: register16 port map(bidir,dst_dec(7),'0',clk,marout);
+    mar: register16 port map(bidir,s6(2),'0',clk,marout);
 
     -- ALU temp registers
     y: register16 port map(bidir,s4(4),'0',clk,yout);
@@ -203,7 +204,7 @@ architecture a_cpu of cpu is
     AluDecA <= DecA or s3(3)
 
     -- ALU
-    aluentity: ALU port map (bidir, AluB, Zin, NopA,AluAdd,ADC,SUB,SBC,ANDD,ORR,XNORR,AluIncA,AluDecA,Clear,NotA,LSR_B,ROR_B,RRC_B,ASR_B,LSL_B,ROL_B,RLC_B, flagout(1), flagout(0), en, AluCFout, AluZFout);
+    aluentity: ALU port map (bidir, AluB, Zin, NopA,AluAdd,ADC,SUB,SBC,ANDD,ORR,XNORR,AluIncA,AluDecA,Clear,NotA,LSR_B,ROR_B,RRC_B,ASR_B,LSL_B,ROL_B,RLC_B, flagout(1), flagout(0), AluCFout, AluZFout);
 
     -- Set Flag
     flagset: setFlag port map (flagout, s6(1), s3(4), s3(5), s3(6), setflagout);
@@ -259,15 +260,18 @@ architecture a_cpu of cpu is
     tridest: tri_state_buffer generic map(n=>16) port map(destout, dest_out, bidir);
     trisource: tri_state_buffer generic map(n=>16) port map(sourceout, source_out, bidir);
 
-    trimdrout: tri_state_buffer generic map(n=>16) port map(mdrout, src_dec(4), bidir);
+    trimdrout: tri_state_buffer generic map(n=>16) port map(mdrout, s1(6), bidir);
       
-    ram1: ram port map(clk,wr,marout(11 downto 0),mdrout,ram_data_out); 
+    ram1: ram port map(clk, wr, marout(11 downto 0), mdrout, ram_data_out); 
     
-    mdr_load <= rd or dst_dec(4);
+    mdr_load <= rd or s6(3);
     
+    wr <= s2(3);
+    rd <= s2(2);
+
     mdrin <= ram_data_out when rd = '1'
-          else bidir when dst_dec(4) = '1';
+          else bidir when s6(3) = '1';
     
-    dec_cir: circ port map (irout,flagout,clk,s1,s3,s4,s5,s6,s7,s2);
+    dec_cir: circ port map (irout, flagout, clk, s1, s3, s4, s5, s6, s7, s2);
 
 end a_cpu; 
