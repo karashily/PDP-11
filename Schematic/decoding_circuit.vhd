@@ -5,7 +5,7 @@ entity circ is
     port(
         ir: in std_logic_vector(15 downto 0);
         flags : in std_logic_vector(15 downto 0);
-        enable: in std_logic;
+        --enable: in std_logic;
         clk: in std_logic;
         s1,s3,s4,s5,s6,s7 :out std_logic_vector(7 downto 0);
         s2 :out std_logic_vector(3 downto 0)

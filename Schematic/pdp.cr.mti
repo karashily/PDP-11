@@ -39,14 +39,6 @@ Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
 -- Compiling entity wide
 -- Compiling architecture arch of wide
 
-} {} {}} {C:/Users/karashily/Desktop/Arch Project/Schematic/operation.vhd} {1 {vcom -work work -2002 -explicit {C:/Users/karashily/Desktop/Arch Project/Schematic/operation.vhd}
-Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
--- Loading package STANDARD
--- Loading package TEXTIO
--- Loading package std_logic_1164
--- Compiling entity operation
--- Compiling architecture arch of operation
-
 } {} {}} {C:/Users/karashily/Desktop/Arch Project/Schematic/decoder3x8.vhd} {1 {vcom -work work -2002 -explicit {C:/Users/karashily/Desktop/Arch Project/Schematic/decoder3x8.vhd}
 Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
 -- Loading package STANDARD
@@ -135,64 +127,7 @@ Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
 -- Compiling entity bitInstSrcDst
 -- Compiling architecture arch of bitInstSrcDst
 
-} {} {}} {C:/Users/karashily/Desktop/Arch Project/Schematic/bus.vhd} {0 {vcom -work work -2002 -explicit {C:/Users/karashily/Desktop/Arch Project/Schematic/bus.vhd}
-Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
--- Loading package STANDARD
--- Loading package TEXTIO
--- Loading package std_logic_1164
--- Compiling entity cpu
--- Compiling architecture a_cpu of cpu
-** Error: C:/Users/karashily/Desktop/Arch Project/Schematic/bus.vhd(70): (vcom-1484) Unknown formal identifier "n".
-
-** Error: C:/Users/karashily/Desktop/Arch Project/Schematic/bus.vhd(70): Signal "clk" is type ieee.std_logic_1164.STD_LOGIC; expecting type ieee.std_logic_1164.STD_LOGIC_VECTOR.
-** Error: C:/Users/karashily/Desktop/Arch Project/Schematic/bus.vhd(70): Signal "bidir" is type ieee.std_logic_1164.STD_LOGIC_VECTOR; expecting type ieee.std_logic_1164.STD_LOGIC.
-** Error: C:/Users/karashily/Desktop/Arch Project/Schematic/bus.vhd(71): (vcom-1484) Unknown formal identifier "n".
-
-** Error: C:/Users/karashily/Desktop/Arch Project/Schematic/bus.vhd(71): Signal "clk" is type ieee.std_logic_1164.STD_LOGIC; expecting type ieee.std_logic_1164.STD_LOGIC_VECTOR.
-** Error: C:/Users/karashily/Desktop/Arch Project/Schematic/bus.vhd(71): Signal "bidir" is type ieee.std_logic_1164.STD_LOGIC_VECTOR; expecting type ieee.std_logic_1164.STD_LOGIC.
-** Error: C:/Users/karashily/Desktop/Arch Project/Schematic/bus.vhd(72): (vcom-1484) Unknown formal identifier "n".
-
-** Error: C:/Users/karashily/Desktop/Arch Project/Schematic/bus.vhd(72): Signal "clk" is type ieee.std_logic_1164.STD_LOGIC; expecting type ieee.std_logic_1164.STD_LOGIC_VECTOR.
-** Error: C:/Users/karashily/Desktop/Arch Project/Schematic/bus.vhd(72): Signal "bidir" is type ieee.std_logic_1164.STD_LOGIC_VECTOR; expecting type ieee.std_logic_1164.STD_LOGIC.
-** Error: C:/Users/karashily/Desktop/Arch Project/Schematic/bus.vhd(73): (vcom-1484) Unknown formal identifier "n".
-
-** Error: C:/Users/karashily/Desktop/Arch Project/Schematic/bus.vhd(73): Signal "clk" is type ieee.std_logic_1164.STD_LOGIC; expecting type ieee.std_logic_1164.STD_LOGIC_VECTOR.
-** Error: C:/Users/karashily/Desktop/Arch Project/Schematic/bus.vhd(73): Signal "bidir" is type ieee.std_logic_1164.STD_LOGIC_VECTOR; expecting type ieee.std_logic_1164.STD_LOGIC.
-** Error: C:/Users/karashily/Desktop/Arch Project/Schematic/bus.vhd(74): (vcom-1484) Unknown formal identifier "n".
-
-** Error: C:/Users/karashily/Desktop/Arch Project/Schematic/bus.vhd(74): Signal "clk" is type ieee.std_logic_1164.STD_LOGIC; expecting type ieee.std_logic_1164.STD_LOGIC_VECTOR.
-** Error: C:/Users/karashily/Desktop/Arch Project/Schematic/bus.vhd(74): Signal "bidir" is type ieee.std_logic_1164.STD_LOGIC_VECTOR; expecting type ieee.std_logic_1164.STD_LOGIC.
-** Error: C:/Users/karashily/Desktop/Arch Project/Schematic/bus.vhd(75): (vcom-1484) Unknown formal identifier "n".
-
-** Error: C:/Users/karashily/Desktop/Arch Project/Schematic/bus.vhd(75): Signal "clk" is type ieee.std_logic_1164.STD_LOGIC; expecting type ieee.std_logic_1164.STD_LOGIC_VECTOR.
-** Error: C:/Users/karashily/Desktop/Arch Project/Schematic/bus.vhd(75): Signal "bidir" is type ieee.std_logic_1164.STD_LOGIC_VECTOR; expecting type ieee.std_logic_1164.STD_LOGIC.
-** Error: C:/Users/karashily/Desktop/Arch Project/Schematic/bus.vhd(76): (vcom-1484) Unknown formal identifier "n".
-
-** Error: C:/Users/karashily/Desktop/Arch Project/Schematic/bus.vhd(76): Signal "clk" is type ieee.std_logic_1164.STD_LOGIC; expecting type ieee.std_logic_1164.STD_LOGIC_VECTOR.
-** Error: C:/Users/karashily/Desktop/Arch Project/Schematic/bus.vhd(76): Signal "bidir" is type ieee.std_logic_1164.STD_LOGIC_VECTOR; expecting type ieee.std_logic_1164.STD_LOGIC.
-** Error: C:/Users/karashily/Desktop/Arch Project/Schematic/bus.vhd(77): (vcom-1484) Unknown formal identifier "n".
-
-** Error: C:/Users/karashily/Desktop/Arch Project/Schematic/bus.vhd(77): Signal "clk" is type ieee.std_logic_1164.STD_LOGIC; expecting type ieee.std_logic_1164.STD_LOGIC_VECTOR.
-** Error: C:/Users/karashily/Desktop/Arch Project/Schematic/bus.vhd(77): Signal "bidir" is type ieee.std_logic_1164.STD_LOGIC_VECTOR; expecting type ieee.std_logic_1164.STD_LOGIC.
-** Error: C:/Users/karashily/Desktop/Arch Project/Schematic/bus.vhd(79): (vcom-1484) Unknown formal identifier "n".
-
-** Error: C:/Users/karashily/Desktop/Arch Project/Schematic/bus.vhd(79): Signal "clk" is type ieee.std_logic_1164.STD_LOGIC; expecting type ieee.std_logic_1164.STD_LOGIC_VECTOR.
-** Error: C:/Users/karashily/Desktop/Arch Project/Schematic/bus.vhd(79): Signal "bidir" is type ieee.std_logic_1164.STD_LOGIC_VECTOR; expecting type ieee.std_logic_1164.STD_LOGIC.
-** Error: C:/Users/karashily/Desktop/Arch Project/Schematic/bus.vhd(80): (vcom-1484) Unknown formal identifier "n".
-
-** Error: C:/Users/karashily/Desktop/Arch Project/Schematic/bus.vhd(80): Signal "clk" is type ieee.std_logic_1164.STD_LOGIC; expecting type ieee.std_logic_1164.STD_LOGIC_VECTOR.
-** Error: C:/Users/karashily/Desktop/Arch Project/Schematic/bus.vhd(80): Signal "bidir" is type ieee.std_logic_1164.STD_LOGIC_VECTOR; expecting type ieee.std_logic_1164.STD_LOGIC.
-** Error: C:/Users/karashily/Desktop/Arch Project/Schematic/bus.vhd(82): (vcom-1484) Unknown formal identifier "n".
-
-** Error: C:/Users/karashily/Desktop/Arch Project/Schematic/bus.vhd(82): Signal "clk" is type ieee.std_logic_1164.STD_LOGIC; expecting type ieee.std_logic_1164.STD_LOGIC_VECTOR.
-** Error: C:/Users/karashily/Desktop/Arch Project/Schematic/bus.vhd(82): Signal "mdrin" is type ieee.std_logic_1164.STD_LOGIC_VECTOR; expecting type ieee.std_logic_1164.STD_LOGIC.
-** Error: C:/Users/karashily/Desktop/Arch Project/Schematic/bus.vhd(83): (vcom-1484) Unknown formal identifier "n".
-
-** Error: C:/Users/karashily/Desktop/Arch Project/Schematic/bus.vhd(83): Signal "clk" is type ieee.std_logic_1164.STD_LOGIC; expecting type ieee.std_logic_1164.STD_LOGIC_VECTOR.
-** Error: C:/Users/karashily/Desktop/Arch Project/Schematic/bus.vhd(83): Signal "bidir" is type ieee.std_logic_1164.STD_LOGIC_VECTOR; expecting type ieee.std_logic_1164.STD_LOGIC.
-** Error: C:/Users/karashily/Desktop/Arch Project/Schematic/bus.vhd(104): VHDL Compiler exiting
-
-} {8.0 9.0 10.0 13.0 14.0 17.0 18.0 21.0 22.0 25.0 26.0 29.0 30.0 33.0 34.0 37.0 38.0 41.0 42.0 45.0 46.0 49.0 50.0 53.0 54.0 57.0} {}} {C:/Users/karashily/Desktop/Arch Project/Schematic/dec3to8.vhd} {1 {vcom -work work -2002 -explicit {C:/Users/karashily/Desktop/Arch Project/Schematic/dec3to8.vhd}
+} {} {}} {C:/Users/karashily/Desktop/Arch Project/Schematic/dec3to8.vhd} {1 {vcom -work work -2002 -explicit {C:/Users/karashily/Desktop/Arch Project/Schematic/dec3to8.vhd}
 Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
 -- Loading package STANDARD
 -- Loading package TEXTIO
@@ -207,6 +142,16 @@ Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
 -- Loading package std_logic_1164
 -- Compiling entity bitSrcDst
 -- Compiling architecture arch of bitSrcDst
+
+} {} {}} {C:/Users/karashily/Desktop/Arch Project/Schematic/register16.vhd} {1 {vcom -work work -2002 -explicit {C:/Users/karashily/Desktop/Arch Project/Schematic/register16.vhd}
+Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package std_logic_arith
+-- Loading package STD_LOGIC_UNSIGNED
+-- Compiling entity register16
+-- Compiling architecture description of register16
 
 } {} {}} {C:/Users/karashily/Desktop/Arch Project/Schematic/decoder2x4.vhd} {1 {vcom -work work -2002 -explicit {C:/Users/karashily/Desktop/Arch Project/Schematic/decoder2x4.vhd}
 Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
