@@ -12,8 +12,8 @@ architecture arch  of bitDstMode is
 
 
 begin
-    address(0) <= dstMode(0);
-    address(1) <= dstMode(1);
+    address(0) <= dstMode(1);
+    address(1) <= dstMode(2);
     address(2) <= '1';
     address(3) <= '0';
     address(4) <= '0';

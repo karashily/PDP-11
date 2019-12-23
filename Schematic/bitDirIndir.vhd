@@ -14,7 +14,7 @@ architecture arch  of bitDirIndir is
 
 
 begin
-    address(0) <= (((not flagStatus(1)) and flagStatus(0)) and (not srcMode(2))) or (((not flagStatus(0)) and flagStatus(1)) and (not dstMode(2)));
+    address(0) <= (((not flagStatus(1)) and flagStatus(0)) and (not srcMode(0))) or (((not flagStatus(0)) and flagStatus(1)) and (not dstMode(0)));
     address(1) <= '0';
     address(2) <= '1';
     address(3) <= '1';

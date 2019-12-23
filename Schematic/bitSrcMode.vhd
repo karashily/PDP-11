@@ -12,8 +12,8 @@ architecture arch  of bitSrcMode is
 
 
 begin
-    address(0) <= srcMode(0);
-    address(1) <= srcMode(1);
+    address(0) <= srcMode(1);
+    address(1) <= srcMode(2);
     address(2) <= '1';
     address(3) <= '0';
     address(4) <= '0';

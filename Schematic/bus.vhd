@@ -166,6 +166,10 @@ architecture a_cpu of cpu is
   signal reg_tri_enable: std_logic_vector(7 downto 0);
   signal reg_load: std_logic_vector(7 downto 0);
 
+  --
+  signal PCenable: std_logic_vector(7 downto 0);
+  --
+
   signal AluB: std_logic_vector(15 downto 0);
 
   signal zout: std_logic_vector(15 downto 0);
@@ -210,7 +214,8 @@ architecture a_cpu of cpu is
 
     flag: register16 port map(flagin,'1','0',clk,flagout);
 
-    mdr: register16 port map(mdrin,mdr_load,'0',clk,mdrout);
+    --change
+    --mdr: register16 port map(mdrin,mdr_load,'0',clk,mdrout);
     mar: register16 port map(bidir,s6(2),'0',clk,marout);
 
     -- ALU temp registers
@@ -266,7 +271,9 @@ architecture a_cpu of cpu is
     Rdst_in_dec: decoder3x8 port map (irout(2 downto 0), Rdst_in, Rdst_in_dec_out);
 
     -- final enables of each general purpose registers
-    reg_tri_enable <= Rsrc_out_dec_out or Rdst_out_dec_out;
+    PCenable(6 downto 0) <= "0000000";
+    PCenable(7) <= s1(5);
+    reg_tri_enable <= Rsrc_out_dec_out or Rdst_out_dec_out or PCenable;
     reg_load <= Rsrc_in_dec_out or Rdst_in_dec_out;
 
     -- tri-states
@@ -298,6 +305,9 @@ architecture a_cpu of cpu is
     wr <= s2(3);
     rd <= s2(2);
 
+    --change
+    mdrout <= ram_data_out when rd = '1'
+          else bidir when s6(3) = '1';
     mdrin <= ram_data_out when rd = '1'
           else bidir when s6(3) = '1';
     
