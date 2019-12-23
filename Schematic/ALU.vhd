@@ -75,7 +75,8 @@ begin
                 CANegB when SUB = '1' or (SBC = '1' and Cin = '1') else
                 CANegBNegC when SBC = '1' else
                 CA1  when IncA = '1' else
-                CANeg1 when DecA = '1';
+                CANeg1 when DecA = '1' else 
+                Cin;
                 
 
 	F <= Fout when en = '1';
