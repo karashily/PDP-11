@@ -14,12 +14,13 @@ END ENTITY ram;
 ARCHITECTURE syncrama OF ram IS
 
 	TYPE ram_type IS ARRAY(0 TO 4095) OF std_logic_vector(15 DOWNTO 0);
-	SIGNAL ram : ram_type := (
-   0     => "0000000001010010",
-   1     => "0000000001000011",
-  OTHERS => "0000000000000000"
-);
 	
+	----------simple_2----------
+	SIGNAL ram : ram_type := (
+   0     => "1110001000000100",
+   1     => "1111000000000000",
+   OTHERS => "0000000000000000"
+);
 	BEGIN
 		PROCESS(clk) IS
 			BEGIN
