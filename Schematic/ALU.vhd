@@ -4,7 +4,7 @@ use IEEE.STD_LOGIC_1164.all;
 entity ALU is
     port (A, B             :       in std_logic_vector (15 downto 0);
           F                :       out std_logic_vector (15 downto 0);
-          NopA,ADDD,ADC,SUB,SBC,ANDD,ORR,XNORR,IncA,DecA,Clear,NotA,LSR_B,ROR_B,RRC_B,ASR_B,LSL_B,ROL_B,RLC_B : in std_logic;
+          NopA,ADDD,ADC,SUB,SBC,ANDD,ORR,XNORR,IncA,DecA,IncB,DecB,Clear,NotB,LSR_B,ROR_B,RRC_B,ASR_B,LSL_B,ROL_B,RLC_B : in std_logic;
           Cin, ZFin        :       in std_logic;
           Cout, ZFout      :       out std_logic);
 end entity ALU;
@@ -24,31 +24,34 @@ component mux4x1 is
 end component mux4x1;
 
 
-signal NotB, NegB, FA1, FAB, FABC, FANegB, FANegBNegC, FANeg1, Fout, one    : std_logic_vector (15 downto 0);   
-signal CB, NotC, CA1, CAB, CABC, CANegB, CANegBNegC, CANeg1      : std_logic;
+signal NotBSig, NegB, FA1, FAB, FABC, FANegB, FANegBNegC, FANeg1, Fout, one, FB1, FBNeg1    : std_logic_vector (15 downto 0);   
+signal CB, NotC, CA1, CAB, CABC, CANegB, CANegBNegC, CANeg1, CB1, CBNeg1      : std_logic;
 signal ZFMout, oring, tempCout, en   :   std_logic;
 
 
 begin
     
-    NotB <= not B;
+    NotBSig <= not B;
     NotC <= not Cin;
     one <= "0000000000000001";
-    NegBAdder    : full16bitAdder  port map (NotB, one, '0', NegB, CB);
+    NegBAdder    : full16bitAdder  port map (NotBSig, one, '0', NegB, CB);
     
     IncA_Adder   : full16bitAdder  port map (A, "0000000000000001", '0', FA1, CA1);
     DecA_Adder   : full16bitAdder  port map (A, "1111111111111111", '0', FANeg1, CANeg1);
     
+    IncB_Adder   : full16bitAdder  port map (B, "0000000000000001", '0', FB1, CB1);
+    DecB_Adder   : full16bitAdder  port map (B, "1111111111111111", '0', FBNeg1, CBNeg1);
+
     ADDD_Adder   : full16bitAdder  port map (A, B, '0', FAB, CAB);
     ADC_Adder    : full16bitAdder  port map (A, B, Cin, FABC, CABC);
     
     SUB_Adder    : full16bitAdder  port map (A, NegB, '0', FANegB, CANegB);
-    SBC_Adder_C0 : full16bitAdder  port map (A, NotB, '1', FANegBNegC, CANegBNegC); 
+    SBC_Adder_C0 : full16bitAdder  port map (A, NotBSig, '1', FANegBNegC, CANegBNegC); 
     
     ZFMux        : mux4x1 port map ('0', '1', ZFin, ZFin, en, oring, ZFMout);
     
     en <= NopA or ADDD or ADC or SUB or SBC or ANDD or ORR or XNORR or IncA or DecA or Clear
-            or NotA or LSR_B or ROR_B or RRC_B or ASR_B or LSL_B or ROL_B or RLC_B;
+            or NotB or LSR_B or ROR_B or RRC_B or ASR_B or LSL_B or ROL_B or RLC_B or IncB or DecB;
 
     Fout    <= A when NopA = '1' else 
                FAB when ADDD = '1' else
@@ -60,8 +63,10 @@ begin
                A xnor B when XNORR = '1' else
                FA1 when IncA = '1' else
                FANeg1 when DecA = '1' else
+               FB1 when IncB = '1' else
+               FBNeg1 when DecB = '1' else
                (others => '0') when clear = '1' else
-               not A when NotA = '1' else
+               not B when NotB = '1' else
                '0' & B (15 downto 1) when LSR_B = '1' else
                B(0) & B (15 downto 1) when ROR_B = '1' else
                Cin & B (15 downto 1) when RRC_B = '1' else
@@ -76,6 +81,8 @@ begin
                 CANegBNegC when SBC = '1' else
                 CA1  when IncA = '1' else
                 CANeg1 when DecA = '1' else 
+                CB1  when IncB = '1' else
+                CBNeg1 when DecB = '1' else 
                 Cin;
                 
 

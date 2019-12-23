@@ -5,7 +5,7 @@ entity operation is
     port(
     ir: in STD_LOGIC_VECTOR(15 downto 0);
     en : in std_logic;
-    NopA,ADDD,ADC,SUB,SBC,ANDD,ORR,XNORR,IncA,DecA,Clear,NotA,LSR_B,ROR_B,RRC_B,ASR_B,LSL_B,ROL_B,RLC_B : out std_logic
+    NopA,ADDD,ADC,SUB,SBC,ANDD,ORR,XNORR,IncB,DecB,Clear,NotB,LSR_B,ROR_B,RRC_B,ASR_B,LSL_B,ROL_B,RLC_B : out std_logic
     );
 end operation;
 
@@ -31,10 +31,10 @@ begin
     XNORR <= (not ir(15)) and ir(14) and ir(13) and ir(12) and istwo and en;
 
     -- 1-op
-    IncA <= (not ir(11)) and (not ir(10)) and ir(9) and (not ir(8)) and isone and en;
-    DecA <= (not ir(11)) and (not ir(10)) and ir(9) and ir(8) and isone and en;
+    IncB <= (not ir(11)) and (not ir(10)) and ir(9) and (not ir(8)) and isone and en;
+    DecB <= (not ir(11)) and (not ir(10)) and ir(9) and ir(8) and isone and en;
     Clear <= (not ir(11)) and ir(10) and (not ir(9)) and (not ir(8)) and isone and en;
-    NotA <= (not ir(11)) and ir(10) and (not ir(9)) and ir(8) and isone and en;
+    NotB <= (not ir(11)) and ir(10) and (not ir(9)) and ir(8) and isone and en;
     LSR_B <= (not ir(11)) and ir(10) and ir(9) and (not ir(8)) and isone and en;
     ROR_B <= (not ir(11)) and ir(10) and ir(9) and ir(8) and isone and en;
     RRC_B <= ir(11) and (not ir(10)) and (not ir(9)) and (not ir(8)) and isone and en;
