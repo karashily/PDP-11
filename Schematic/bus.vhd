@@ -2,12 +2,10 @@ library ieee;
 use ieee.std_logic_1164.all;
 
 entity cpu is
-  port(bidir: INOUT STD_LOGIC_VECTOR (15 DOWNTO 0);
-      src_sel: in std_logic_vector(2 downto 0);
-      dst_sel: in std_logic_vector(2 downto 0);
-      src_enable: in std_logic;
-      dst_enable: in std_logic;
-      clk: in std_logic);
+  port(
+    bidir: INOUT STD_LOGIC_VECTOR (15 DOWNTO 0);
+    rst: in std_logic;
+    clk: in std_logic);
 end cpu;
 
 architecture a_cpu of cpu is
@@ -191,14 +189,14 @@ architecture a_cpu of cpu is
 
   begin
     -- registers
-    r0: register16 port map(bidir,reg_load(0),'0',clk,r0out);
-    r1: register16 port map(bidir,reg_load(1),'0',clk,r1out);
-    r2: register16 port map(bidir,reg_load(2),'0',clk,r2out);
-    r3: register16 port map(bidir,reg_load(3),'0',clk,r3out);
-    r4: register16 port map(bidir,reg_load(4),'0',clk,r4out);
-    r5: register16 port map(bidir,reg_load(5),'0',clk,r5out);
-    r6: register16 port map(bidir,reg_load(6),'0',clk,r6out);
-    r7: register16 port map(PCin,PCload,'0',clk,r7out);
+    r0: register16 port map(bidir,reg_load(0),rst,clk,r0out);
+    r1: register16 port map(bidir,reg_load(1),rst,clk,r1out);
+    r2: register16 port map(bidir,reg_load(2),rst,clk,r2out);
+    r3: register16 port map(bidir,reg_load(3),rst,clk,r3out);
+    r4: register16 port map(bidir,reg_load(4),rst,clk,r4out);
+    r5: register16 port map(bidir,reg_load(5),rst,clk,r5out);
+    r6: register16 port map(bidir,reg_load(6),rst,clk,r6out);
+    r7: register16 port map(PCin,PCload,rst,clk,r7out);
 
     PCload <= reg_load(7) or s5(2);
 
@@ -207,20 +205,20 @@ architecture a_cpu of cpu is
 
     PCinc: incrementor port map(r7out, s5(1), PCincOut);
 
-    dest: register16 port map(bidir, dest_in, '0', clk, destout);
-    source: register16 port map(bidir, source_in, '0', clk, sourceout);
+    dest: register16 port map(bidir, dest_in, rst, clk, destout);
+    source: register16 port map(bidir, source_in, rst, clk, sourceout);
 
-    ir: register16 port map(bidir,s6(4),'0',clk,irout);
+    ir: register16 port map(bidir,s6(4),rst,clk,irout);
 
-    flag: register16 port map(flagin,'1','0',clk,flagout);
+    flag: register16 port map(flagin,'1',rst,clk,flagout);
 
     --change
     --mdr: register16 port map(mdrin,mdr_load,'0',clk,mdrout);
-    mar: register16 port map(bidir,s6(2),'0',clk,marout);
+    mar: register16 port map(bidir,s6(2),rst,clk,marout);
 
     -- ALU temp registers
-    y: register16 port map(bidir,s4(4),'0',clk,yout);
-    z: register16 port map(Zin,s4(1),'0',clk,zout);
+    y: register16 port map(bidir,s4(4),rst,clk,yout);
+    z: register16 port map(Zin,s4(1),rst,clk,zout);
 
     triy: tri_state_buffer generic map(n=>16) port map(yout, s2(1), AluB);
     triz: tri_state_buffer generic map(n=>16) port map(zout, s1(7), bidir);
