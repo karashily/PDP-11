@@ -70,7 +70,7 @@ architecture a_cpu of cpu is
   component ALU is
     port (A, B             :       in std_logic_vector (15 downto 0);
           F                :       out std_logic_vector (15 downto 0);
-          NopA,ADDD,ADC,SUB,SBC,ANDD,ORR,XNORR,IncA,DecA,Clear,NotA,LSR_B,ROR_B,RRC_B,ASR_B,LSL_B,ROL_B,RLC_B : in std_logic;
+          NopA,ADDD,ADC,SUB,SBC,ANDD,ORR,XNORR,IncA,DecA,IncB,DecB,Clear,NotB,LSR_B,ROR_B,RRC_B,ASR_B,LSL_B,ROL_B,RLC_B : in std_logic;
           Cin, ZFin        :       in std_logic;
           Cout, ZFout      :       out std_logic);
   end component;
@@ -79,9 +79,10 @@ architecture a_cpu of cpu is
     port(
     ir: in STD_LOGIC_VECTOR(15 downto 0);
     en : in std_logic;
-    NopA,ADDD,ADC,SUB,SBC,ANDD,ORR,XNORR,IncA,DecA,Clear,NotA,LSR_B,ROR_B,RRC_B,ASR_B,LSL_B,ROL_B,RLC_B : out std_logic
+    NopA,ADDD,ADC,SUB,SBC,ANDD,ORR,XNORR,IncB,DecB,Clear,NotB,LSR_B,ROR_B,RRC_B,ASR_B,LSL_B,ROL_B,RLC_B : out std_logic
     );
   end component;
+
 
   component incrementor is
     port (inp       :   in std_logic_vector (15 downto 0);
@@ -176,7 +177,7 @@ architecture a_cpu of cpu is
   signal zin: std_logic_vector(15 downto 0);
 
   -- operation signals
-  signal NopA,ADDD,ADC,SUB,SBC,ANDD,ORR,XNORR,IncA,DecA,Clear,NotA,LSR_B,ROR_B,RRC_B,ASR_B,LSL_B,ROL_B,RLC_B: std_logic;
+  signal NopA,ADDD,ADC,SUB,SBC,ANDD,ORR,XNORR,IncA,DecA,IncB,DecB,Clear,NotB,LSR_B,ROR_B,RRC_B,ASR_B,LSL_B,ROL_B,RLC_B: std_logic;
 
   signal AluAdd, AluIncA, AluDecA: std_logic;
 
@@ -227,11 +228,11 @@ architecture a_cpu of cpu is
 
     --
     AluAdd <= ADDD or s3(1);
-    AluIncA <= IncA or s3(2);
-    AluDecA <= DecA or s3(3);
+    IncA <= s3(2);
+    DecA <= s3(3);
 
     -- ALU
-    aluentity: ALU port map (bidir, AluB, Zin, NopA,AluAdd,ADC,SUB,SBC,ANDD,ORR,XNORR,AluIncA,AluDecA,Clear,NotA,LSR_B,ROR_B,RRC_B,ASR_B,LSL_B,ROL_B,RLC_B, flagout(1), flagout(0), AluCFout, AluZFout);
+    aluentity: ALU port map (bidir, AluB, Zin, NopA,AluAdd,ADC,SUB,SBC,ANDD,ORR,XNORR,IncA,DecA,IncB,DecB,Clear,NotB,LSR_B,ROR_B,RRC_B,ASR_B,LSL_B,ROL_B,RLC_B, flagout(1), flagout(0), AluCFout, AluZFout);
 
     -- Set Flag
     flagset: setFlag port map (flagout, s6(1), s3(4), s3(5), s3(6), setflagout);
@@ -240,7 +241,7 @@ architecture a_cpu of cpu is
     flagin(15 downto 2) <= setflagout(15 downto 2);
 
     -- operation selector
-    opsel: operation port map(irout,s5(3),NopA,ADDD,ADC,SUB,SBC,ANDD,ORR,XNORR,IncA,DecA,Clear,NotA,LSR_B,ROR_B,RRC_B,ASR_B,LSL_B,ROL_B,RLC_B);
+    opsel: operation port map(irout,s5(3),NopA,ADDD,ADC,SUB,SBC,ANDD,ORR,XNORR,IncB,DecB,Clear,NotB,LSR_B,ROR_B,RRC_B,ASR_B,LSL_B,ROL_B,RLC_B);
   
     -- Rsrc/dst and SOURCE/DEST decoders that uses status flag
     Rsrcdstout: src_dst_dec port map(s5(7), flagout(3 downto 2), Rsrc_out_temp, Rdst_out_temp);

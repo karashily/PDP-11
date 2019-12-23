@@ -1,0 +1,10 @@
+MOV #9, R1
+NOP
+NOP
+NOP
+NOP
+NOP
+MOV #8, R0
+MOV #2, R2
+HLT
+MOV 0, R3
