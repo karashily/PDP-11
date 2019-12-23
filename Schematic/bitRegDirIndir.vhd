@@ -16,7 +16,7 @@ signal regDirSrc , regDirDst , regIndirSrcDst:std_logic;
 begin
     regDirSrc <= flagStatus(0) and (not flagStatus(1)) and (not srcMode(0)) and (not srcMode(1)) and (not srcMode(2));
     regDirDst <= flagStatus(1) and (not flagStatus(0)) and (not dstMode(0)) and (not dstMode(1)) and (not dstMode(2));
-    regIndirSrcDst <= (flagStatus(0) and (not flagStatus(1)) and (not srcMode(2)) and (not srcMode(1)) and srcMode(0)) or (flagStatus(1) and (not flagStatus(0)) and (not dstMode(0)) and (not dstMode(1)) and dstMode(2));
+    regIndirSrcDst <= (flagStatus(0) and (not flagStatus(1)) and (not srcMode(2)) and (not srcMode(1)) and srcMode(0)) or (flagStatus(1) and (not flagStatus(0)) and (not dstMode(2)) and (not dstMode(1)) and dstMode(0));
     address(0) <= (regDirSrc or regDirDst) and not(regIndirSrcDst);
     address(1) <= (regDirSrc or regIndirSrcDst) and not(regDirDst);
     address(2) <= not ((regDirSrc or regIndirSrcDst) and not(regDirDst));
