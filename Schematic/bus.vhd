@@ -187,6 +187,8 @@ architecture a_cpu of cpu is
 
   signal offset: std_logic_vector(15 downto 0);
 
+  signal notclk: std_logic;
+
   begin
     -- registers
     r0: register16 port map(bidir,reg_load(0),rst,clk,r0out);
@@ -198,17 +200,17 @@ architecture a_cpu of cpu is
     r6: register16 port map(bidir,reg_load(6),rst,clk,r6out);
     r7: register16 port map(PCin,PCload,rst,clk,r7out);
 
-    PCload <= reg_load(7) or s5(2);
+    PCload <= reg_load(7) or s5(2) or s4(5);
 
-    PCin <= bidir when reg_load(7) = '1'
+    PCin <= bidir when reg_load(7) = '1' or s4(5) = '1'
       else PCincOut when s5(2) = '1';
 
     PCinc: incrementor port map(r7out, s5(1), PCincOut);
 
     dest: register16 port map(bidir, dest_in, rst, clk, destout);
     source: register16 port map(bidir, source_in, rst, clk, sourceout);
-
-    ir: register16 port map(bidir,s6(4),rst,clk,irout);
+    notclk <= not clk;
+    ir: register16 port map(bidir,s6(4),rst,notclk,irout);
 
     flag: register16 port map(flagin,'1',rst,clk,flagout);
 
