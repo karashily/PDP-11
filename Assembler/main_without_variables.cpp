@@ -9,15 +9,11 @@
 using namespace std;
 
 #define rep(i, a, b) for(int i = a; i<b; i++)
-#define rrep(i, a, b) for(int i = a; i>=b; i--)
 #define all(v) v.begin(), v.end()
 #define PB push_back
 
 map<string, int> labels;
-map<int, int> variables;
 vector<string> program;
-bool stop = false;
-int indx;
 
 //===================================================
 //--------Enum's with OpCodes of instructions--------
@@ -78,13 +74,11 @@ enum NoOp {
 //===============Functions Declaration===============
 //===================================================
 
-void storeVariables();
-
 void storeLabelsOffsets();
 
 string getLabel(string s);
 
-int getXVal(string s);
+int extractX(string s);
 
 void convertUpperCase(string & str);
 
@@ -100,7 +94,7 @@ bitset<4> getOperationOpCode(string op, int i);
 //return 111111<offset>
 bitset<16> extractOffset(string str);
 
-string getOpName(string str);
+string extractOpName(string str);
 
 // i = 1 ==> 1-operand
 // i = 2 ==> 2-operand
@@ -113,8 +107,6 @@ bitset<3> getMode(string instr, int i, int j);
 // j = 1 ==> dest
 // j = 2 ==> src
 bitset<3> getRegisterNum(string instr, int i, int j);
-
-bool isVariable(string instr, int i, int j);
 
 bool isLabel(string str);
 
@@ -153,79 +145,69 @@ bitset<16> assembler(string s) {
 	}
 
 	//cut first 4 characters of the instruction, in case it's XNOR
-	string opName = getOpName(s);
+	string opName = extractOpName(s);
 
 	if (isNoOperand(opName)) {
 		bitset<4> operation = getOperationOpCode(opName, 0);
 		string tempIR = "11110o0000000000";
 		tempIR[5] = '0' + operation[0];
 		IR = bitset<16>(tempIR);
-		if (opName == "HLT") stop = true;
 	}
 
 	else if (isOneOperand(opName)) {
-		if (isVariable(s, 1, 1))
-			IR = bitset<16>("1111111111111111");
-		else {
-			bitset<4> operation = getOperationOpCode(opName, 1);
-			string tempIR = "1110111100111111";
-			tempIR[4] = '0' + operation[3];
-			tempIR[5] = '0' + operation[2];
-			tempIR[6] = '0' + operation[1];
-			tempIR[7] = '0' + operation[0];
+		bitset<4> operation = getOperationOpCode(opName, 1);
+		string tempIR = "1110111100111111";
+		tempIR[4] = '0' + operation[3];
+		tempIR[5] = '0' + operation[2];
+		tempIR[6] = '0' + operation[1];
+		tempIR[7] = '0' + operation[0];
 
-			bitset<3> destMode = getMode(s, 1, 1);
+		bitset<3> destMode = getMode(s, 1, 1);
 
-			tempIR[10] = '0' + destMode[2];
-			tempIR[11] = '0' + destMode[1];
-			tempIR[12] = '0' + destMode[0];
+		tempIR[10] = '0' + destMode[2];
+		tempIR[11] = '0' + destMode[1];
+		tempIR[12] = '0' + destMode[0];
 
-			bitset<3> regNum = getRegisterNum(s, 1, 1);
+		bitset<3> regNum = getRegisterNum(s, 1, 1);
 
-			tempIR[13] = '0' + regNum[2];
-			tempIR[14] = '0' + regNum[1];
-			tempIR[15] = '0' + regNum[0];
+		tempIR[13] = '0' + regNum[2];
+		tempIR[14] = '0' + regNum[1];
+		tempIR[15] = '0' + regNum[0];
 
-			IR = bitset<16>(tempIR);
-		}
+		IR = bitset<16>(tempIR);
 	}
 
 	else if (isTwoOperand(s)) {
-		if (isVariable(s, 2, 2) || isVariable(s, 2, 1)) {
-			IR = bitset<16>("1111111111111111");
-		}
-		else {
-			bitset<4> operation = getOperationOpCode(opName, 2);
-			string tempIR = "1111111111111111";
-			tempIR[0] = '0' + operation[3];
-			tempIR[1] = '0' + operation[2];
-			tempIR[2] = '0' + operation[1];
-			tempIR[3] = '0' + operation[0];
+		bitset<4> operation = getOperationOpCode(opName, 2);
+		string tempIR = "1111111111111111";
+		tempIR[0] = '0' + operation[3];
+		tempIR[1] = '0' + operation[2];
+		tempIR[2] = '0' + operation[1];
+		tempIR[3] = '0' + operation[0];
 
-			bitset<3> srcMode = getMode(s, 2, 2);
-			bitset<3> destMode = getMode(s, 2, 1);
+		bitset<3> srcMode = getMode(s, 2, 2);
+		bitset<3> destMode = getMode(s, 2, 1);
 
-			tempIR[4] = '0' + srcMode[2];
-			tempIR[5] = '0' + srcMode[1];
-			tempIR[6] = '0' + srcMode[0];
+		tempIR[4] = '0' + srcMode[2];
+		tempIR[5] = '0' + srcMode[1];
+		tempIR[6] = '0' + srcMode[0];
 
-			tempIR[10] = '0' + destMode[2];
-			tempIR[11] = '0' + destMode[1];
-			tempIR[12] = '0' + destMode[0];
+		tempIR[10] = '0' + destMode[2];
+		tempIR[11] = '0' + destMode[1];
+		tempIR[12] = '0' + destMode[0];
 
-			bitset<3> destRegNum = getRegisterNum(s, 2, 1);
-			bitset<3> srcRegNum = getRegisterNum(s, 2, 2);
+		bitset<3> destRegNum = getRegisterNum(s, 2, 1);
+		bitset<3> srcRegNum = getRegisterNum(s, 2, 2);
 
-			tempIR[7] = '0' + srcRegNum[2];
-			tempIR[8] = '0' + srcRegNum[1];
-			tempIR[9] = '0' + srcRegNum[0];
+		tempIR[7] = '0' + srcRegNum[2];
+		tempIR[8] = '0' + srcRegNum[1];
+		tempIR[9] = '0' + srcRegNum[0];
 
-			tempIR[13] = '0' + destRegNum[2];
-			tempIR[14] = '0' + destRegNum[1];
-			tempIR[15] = '0' + destRegNum[0];
+		tempIR[13] = '0' + destRegNum[2];
+		tempIR[14] = '0' + destRegNum[1];
+		tempIR[15] = '0' + destRegNum[0];
 
-			IR = bitset<16>(tempIR);
-		}
+		IR = bitset<16>(tempIR);
 	}
 
 	else if (isBranching(opName)) {
@@ -288,7 +270,6 @@ int main() {
 	}
 
 	storeLabelsOffsets();
-	storeVariables();
 	bitset<16> IR;
 
 	string name = "";
@@ -296,19 +277,16 @@ int main() {
 	string outFileName = name + "Out.txt";
 	ofstream outFile(outFileName);
 
-	indx = 0;
-	for (; indx < program.size(); indx++) {
-		line = program[indx];
+	for (auto line : program) {
 		//if the line has value of X only
 		if (!isalpha(line[0])) {
-			bitset<16> X = getXVal(line);
+			bitset<16> X = extractX(line);
 			outFile << X << endl;
 			continue;
 		}
 		IR = assembler(line);
 		if (IR == bitset<16>("1111111111111111")) continue;
 		outFile << IR << endl;
-		if (stop) break;
 	}
 
 	outFile.close();
@@ -320,18 +298,6 @@ int main() {
 //===================================================
 //=================Helpful functions=================
 //===================================================
-
-void storeVariables() {
-	int sz = program.size();
-	rrep(i, sz - 1, 0) {
-		string line = program[i];
-		if (line[0] != '#') break;
-		string temp = "";
-		line.erase(0, 1);
-		while (!line.empty() && line[0] != ' ' && line[0] != '\t') temp += line[0], line.erase(0, 1);
-		variables[i+1] = stoi(temp);
-	}
-}
 
 void storeLabelsOffsets() {
 	int instructionsCount = program.size();
@@ -350,7 +316,7 @@ string getLabel(string s) {
 	return label;
 }
 
-int getXVal(string s) {
+int extractX(string s) {
 	string temp = "";
 	while (!s.empty() && s[0] != ' ' && s[0] != '\t')
 		temp += s[0], s.erase(0, 1);
@@ -498,7 +464,7 @@ bitset<16> extractOffset(string str) {
 	return offset;
 }
 
-string getOpName(string str) {
+string extractOpName(string str) {
 	string op = "";
 	while (!str.empty() && str[0] != ' ' && str[0] != '\t')
 		op += str[0], str.erase(0, 1);
@@ -581,92 +547,6 @@ bitset<3> getRegisterNum(string instr, int i, int j) {
 		cout << "Error! Can't decide which number" << endl;
 
 	return num;
-}
-
-// i = 1 ==> 1-operand
-// i = 2 ==> 2-operand
-// j = 1 ==> dest
-// j = 2 ==> src
-bool isVariable(string s, int i, int j) {
-	return false;
-	string instr = s;
-	//Remove operation
-	while (instr[0] != ' ') instr.erase(0, 1);
-	removeSpaces(instr);
-	
-
-	//if I'm in 2-operand mode, but I'm getting destination
-	if (i == 2 && j == 1) {
-		//remove src
-		while (instr[0] != ' ') instr.erase(0, 1);
-		removeSpaces(instr);
-	}
-
-	
-	//if numeric
-	if (instr[0] >= 48 && instr[0] <= 57) {
-		bool isIndexed = instr[1] == '(';
-
-		int value; string temp = "";
-		while (instr[0] >= 48 && instr[0] <= 57) temp += instr[0], instr.erase(0, 1);
-		value = stoi(temp);
-
-		if (isIndexed) {
-			int pos = s.find(instr);
-			s[pos] = 'X';
-			//replace instruction
-			program[indx] = s;
-			//add X value
-			string X = to_string(instr[0]);
-			program.insert(program.begin() + indx + 1, X);
-			indx--;
-			return true;
-		}
-
-		string oper = getOpName(s);
-		//means 1-operand
-		if (i == 1) {
-			oper += " X(R7)";
-			string X = to_string(value - indx + 1);
-			program[indx] = oper;
-			program.insert(program.begin() + indx + 1, X);
-			indx--;
-			return true;
-		}
-		else {
-			if (j == 1) {
-				int pos = s.find(instr);
-				string newInstr = "";
-				for (int i = 0; i != pos; i++) newInstr += s[i];
-				newInstr += " X(R7)";
-				program[indx] = newInstr;
-				string X = to_string(value - indx + 1);
-				program.insert(program.begin() + indx + 1, X);
-				indx--;
-				return true;
-			}
-			else {
-				string newInstr = getOpName(s);
-				newInstr += " X(R7) ";
-				string rest = "";
-				int i = s.find(instr);
-				bool start = false;
-				for (; i < s.size(); i++) {
-					if (s[i] == ',') start = true;
-					if (start) rest += s[i];
-				}
-				newInstr += rest;
-				program[indx] = newInstr;
-				string X = to_string(value - indx + 1);
-				program.insert(program.begin() + indx + 1, X);
-				indx--;
-				return true;
-			}
-		}
-
-	}		
-		
-	return false;
 }
 
 bool isLabel(string str) {
