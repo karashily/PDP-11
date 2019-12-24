@@ -5,18 +5,18 @@ CMP @R1, R3
 BGE 5
 ADD (R1)+, 18
 DEC R0
-BNE -6
+BNE 6
 BR 4
 SUB (R1)+, 18
 DEC R0
-BNE -11
+BNE 1
 HLT
 #0
 #7
 #4
-#-5
+#5
 #3
-#-6
-#-1
+#6
+#1
 #8
-#-2
+#2

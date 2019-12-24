@@ -299,6 +299,12 @@ int main() {
 	indx = 0;
 	for (; indx < program.size(); indx++) {
 		line = program[indx];
+		if (line[0] == '#') {
+			line.erase(0, 1);
+			bitset<16> v = getXVal(line);
+			outFile << v << endl;
+			continue;
+		}
 		//if the line has value of X only
 		if (!isalpha(line[0])) {
 			bitset<16> X = getXVal(line);
@@ -308,7 +314,6 @@ int main() {
 		IR = assembler(line);
 		if (IR == bitset<16>("1111111111111111")) continue;
 		outFile << IR << endl;
-		if (stop) break;
 	}
 
 	outFile.close();
@@ -588,7 +593,6 @@ bitset<3> getRegisterNum(string instr, int i, int j) {
 // j = 1 ==> dest
 // j = 2 ==> src
 bool isVariable(string s, int i, int j) {
-	return false;
 	string instr = s;
 	//Remove operation
 	while (instr[0] != ' ') instr.erase(0, 1);
@@ -601,7 +605,8 @@ bool isVariable(string s, int i, int j) {
 		while (instr[0] != ' ') instr.erase(0, 1);
 		removeSpaces(instr);
 	}
-
+	bool indirect = instr[0] == '@';
+	if (indirect) instr.erase(0, 1);
 	
 	//if numeric
 	if (instr[0] >= 48 && instr[0] <= 57) {
@@ -613,11 +618,11 @@ bool isVariable(string s, int i, int j) {
 
 		if (isIndexed) {
 			int pos = s.find(instr);
-			s[pos] = 'X';
+			s[pos-1] = 'X';
 			//replace instruction
 			program[indx] = s;
 			//add X value
-			string X = to_string(instr[0]);
+			string X = to_string(value);
 			program.insert(program.begin() + indx + 1, X);
 			indx--;
 			return true;
@@ -627,7 +632,7 @@ bool isVariable(string s, int i, int j) {
 		//means 1-operand
 		if (i == 1) {
 			oper += " X(R7)";
-			string X = to_string(value - indx + 1);
+			string X = to_string(value - indx - 1);
 			program[indx] = oper;
 			program.insert(program.begin() + indx + 1, X);
 			indx--;
@@ -635,12 +640,12 @@ bool isVariable(string s, int i, int j) {
 		}
 		else {
 			if (j == 1) {
-				int pos = s.find(instr);
+				int pos = s.find(to_string(value));
 				string newInstr = "";
 				for (int i = 0; i != pos; i++) newInstr += s[i];
 				newInstr += " X(R7)";
 				program[indx] = newInstr;
-				string X = to_string(value - indx + 1);
+				string X = to_string(value - indx - 1);
 				program.insert(program.begin() + indx + 1, X);
 				indx--;
 				return true;
@@ -657,7 +662,7 @@ bool isVariable(string s, int i, int j) {
 				}
 				newInstr += rest;
 				program[indx] = newInstr;
-				string X = to_string(value - indx + 1);
+				string X = to_string(value - indx - 1);
 				program.insert(program.begin() + indx + 1, X);
 				indx--;
 				return true;
@@ -665,7 +670,26 @@ bool isVariable(string s, int i, int j) {
 		}
 
 	}		
-		
+
+	//if #, it has to be in src
+	if (instr[0] == '#') {
+		int value; string temp = "";
+		instr.erase(0, 1);
+		while (instr[0] >= 48 && instr[0] <= 57) temp += instr[0], instr.erase(0, 1);
+		value = stoi(temp);
+
+		string opName = getOpName(s);
+		int i = s.find(',');
+		string rest = "";
+		rep(j, i, s.size()) rest += s[j];
+		string newInstr = opName + " (R7)+" + rest;
+		program[indx] = newInstr;
+		program.insert(program.begin() + indx + 1, to_string(value));
+		indx--;
+		return true;
+	}
+
+
 	return false;
 }
 
