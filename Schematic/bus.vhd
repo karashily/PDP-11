@@ -294,7 +294,7 @@ architecture a_cpu of cpu is
     
     
     -- offset out in case of branching
-    offset <= "000000"&irout(9 downto 0);
+    offset <= irout(9)&irout(9)&irout(9)&irout(9)&irout(9)&irout(9)&irout(9 downto 0);
     trioffset: tri_state_buffer generic map(n=>16) port map(offset, s6(5), bidir);
 
 
