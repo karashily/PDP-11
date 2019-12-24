@@ -15,9 +15,11 @@ ARCHITECTURE syncrama OF ram IS
 
 	TYPE ram_type IS ARRAY(0 TO 4095) OF std_logic_vector(15 DOWNTO 0);
 	
+	----------T_2----------
 	----------T_1----------
 	SIGNAL ram : ram_type := (
-   0     => "0000000000001011",
+   
+   0      => "1000000000000000",
    OTHERS => "0000000000000000"
    );
 	BEGIN
